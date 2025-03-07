@@ -1,0 +1,52 @@
+name: 🔬 Experimental Change
+description: Propose a visionary or experimental improvement for the Zynith SEO plugin.
+labels: ['enhancement', 'pending triage']
+title: '[DATE]: [EXPERIMENTAL FEATURE NAME]'
+
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Hi. Thanks for taking the time to propose an experimental change for the Zynith SEO project!
+
+              **Before submitting, please consider the following:**
+              - This template is for proposing visionary ideas or experimental changes that may not be ready for production but have potential.
+              - Experimental changes might not be implemented immediately and may require testing or further validation.
+              - Ensure that your suggestion is detailed enough to assess the impact and feasibility of the change.
+              - If your suggestion is more practical, consider submitting it as a regular feature request instead.
+
+    - type: textarea
+      id: problem
+      attributes:
+          label: Current Situation
+          description: Provide an overview of the current situation, identifying any shortcomings or problems your experiment seeks to address.
+          placeholder: A clear and concise description of the problem or limitation you're addressing.
+      validations:
+          required: true
+
+    - type: textarea
+      id: visionary-solution
+      attributes:
+          label: Experimental Proposal
+          description: Describe your visionary or experimental solution in detail. How do you imagine this would work? What would be the impact?
+          placeholder: A clear and detailed description of your experimental change or improvement.
+      validations:
+          required: true
+
+    - type: textarea
+      id: risks
+      attributes:
+          label: Potential Risks
+          description: Describe any risks or challenges that might arise from implementing this experimental change.
+          placeholder: A clear description of any risks or concerns (e.g., performance impact, security risks).
+      validations:
+          required: false
+
+    - type: textarea
+      id: additional-context
+      attributes:
+          label: Additional Context
+          description: |
+              Provide any additional context, relevant references, or materials that can help us better understand your experimental proposal.
+              This could include screenshots, configuration files, or links to similar solutions.
+          placeholder: Any additional context that might help evaluate this experimental change.
