@@ -1,0 +1,16 @@
+{
+  "env": {
+    "node": true
+  },
+  "ignorePatterns": [".eslintrc.js"],
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "extends": ["plugin:prettier/recommended"],
+      "parserOptions": {
+        "sourceType": "module"
+      }
+    }
+  ],
+  "root": true
+}

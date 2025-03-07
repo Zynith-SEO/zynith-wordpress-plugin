@@ -1,0 +1,116 @@
+name: 🐞 Bug Report
+description: Report a problem found in the Zynith SEO product.
+labels: ['bug', 'pending triage']
+title: '[DATE]: [FEATURE NAME]'
+
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Hi. Thanks for taking the time to fill out this bug report!
+
+              Before we start, please be aware of the following points:
+              - Review our Troubleshooting and FAQ pages ensure your issue isn't already solved.
+              - Avoid duplicating any existing issues that may already track or resolve your problem.
+              - Ensure that the issue you're reporting is directly related to the Zynith SEO product.
+              - Use a descriptive and precise title for your bug report.
+              - Add the `beta` label if your issue relates to a current beta release.
+
+    - type: input
+      id: wp-version
+      attributes:
+          label: WordPress Version
+          description: Please specify the version of WordPress you are using.
+          placeholder: E.g., 6.0.1
+      validations:
+          required: true
+
+    - type: input
+      id: plugin-version
+      attributes:
+          label: Zynith SEO Plugin Version
+          description: Please specify the version of the Zynith SEO plugin you are using.
+          placeholder: E.g., 1.2.0
+      validations:
+          required: true
+
+    - type: input
+      id: hosting-os
+      attributes:
+          label: Hosting OS
+          description: Please provide details of your hosting server OS (e.g., Apache, NGINX, etc.).
+          placeholder: E.g., Apache 2.4 or NGINX 1.19
+      validations:
+          required: true
+
+    - type: input
+      id: hosting-company
+      attributes:
+          label: Hosting Company
+          description: Name of your hosting provider (e.g., WP Engine, Flywheel, SiteGround, etc.).
+          placeholder: E.g., WP Engine
+      validations:
+          required: true
+
+    - type: input
+      id: hosting-plan
+      attributes:
+          label: Hosting Plan
+          description: Type of hosting plan (e.g., shared, VPS, dedicated).
+          placeholder: E.g., Shared Hosting
+      validations:
+          required: true
+
+    - type: textarea
+      id: analysis
+      attributes:
+          label: Analysis
+          description: Please provide a concise description of the issue you're encountering.
+          placeholder: A clear and concise description of what the bug is.
+      validations:
+          required: true
+
+    - type: textarea
+      id: expected-behavior
+      attributes:
+          label: Expected Behavior
+          description: Please describe what you expected to happen.
+          placeholder: A clear and concise description of the expected behavior.
+      validations:
+          required: true
+
+    - type: textarea
+      id: reproduction
+      attributes:
+          label: Steps To Reproduce
+          description: Please describe the steps to reproduce the issue.
+          placeholder: |
+              Steps to reproduce the bug:
+              1. Go to...
+              2. Click on...
+              3. Observe the error...
+      validations:
+          required: true
+
+    - type: textarea
+      id: logs
+      attributes:
+          label: Logs
+          description: |
+              Please provide relevant log output.
+              Be sure to **remove any sensitive information** (passwords, tokens, etc.).
+              If you have lengthy logs, use the file upload functionality in the `Additional Context` section.
+          placeholder: Please paste logging output here.
+      validations:
+          required: false
+
+    - type: textarea
+      id: additional-context
+      attributes:
+          label: Additional Context
+          description: |
+              Provide any other relevant details for your bug report.
+              This could include screenshots, configuration files, or additional logs.
+          placeholder: Any additional context that might be helpful.
+      validations:
+          required: false

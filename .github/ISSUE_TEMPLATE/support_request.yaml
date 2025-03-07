@@ -1,0 +1,76 @@
+name: ❓ Questions
+description: Ask a question or get help with the Zynith SEO plugin.
+labels: ['question', 'pending triage']
+title: '[DATE]: [TOPIC]'
+
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Hi. Before you start filling out this form, please review the following:
+              - Check our **FAQ** and **Troubleshooting** sections to see if your question has already been addressed.
+              - Search through **existing issues** (open or closed) that might provide a solution or answer to your query.
+              - For issues related to other plugins, please raise the question with the respective plugin's support page.
+              - You can also reach out to our community on [our forum](#) or on social media for quick help.
+
+    - type: textarea
+      id: question
+      attributes:
+          label: Your Question
+          description: Please describe the issue or question you have in detail.
+          placeholder: A clear and concise description of your question or the issue you're facing.
+      validations:
+          required: true
+
+    - type: textarea
+      id: logs
+      attributes:
+          label: Logs (If Applicable)
+          description: |
+              If applicable, provide relevant logs related to your issue or question.
+              Be sure to **remove any sensitive information** (passwords, tokens, etc.).
+              If you have long log files, use the file upload option in the `Additional Context` section.
+          placeholder: Paste any relevant logs here.
+          render: markdown
+      validations:
+          required: false
+
+    - type: textarea
+      id: config
+      attributes:
+          label: Configuration (If Applicable)
+          description: |
+              If relevant to your question, provide your Zynith SEO configuration files or any related setup details.
+              Be sure to **remove any sensitive information** (passwords, tokens, etc.).
+              If the configuration is too long, use the file upload option in the `Additional Context` section.
+          placeholder: Paste your configuration details here.
+          render: json
+      validations:
+          required: false
+
+    - type: textarea
+      id: environment
+      attributes:
+          label: Environment
+          description: |
+              Provide information about your environment, including the version of WordPress and any related plugins you’re using.
+
+              Example:
+              - **OS**: Ubuntu 20.04
+              - **WordPress**: 6.0.1
+              - **Zynith SEO**: 1.2.0
+          value: |
+              - OS:
+              - WordPress:
+              - Zynith SEO:
+      validations:
+          required: false
+
+    - type: textarea
+      id: additional-context
+      attributes:
+          label: Additional Context
+          description: |
+              Any other information that might help us understand or answer your question.
+              You can include screenshots, logs, or any other relevant materials.
+          placeholder: Any additional context or details for your question.

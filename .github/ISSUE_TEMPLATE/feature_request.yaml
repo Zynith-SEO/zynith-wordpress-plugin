@@ -1,0 +1,51 @@
+name: 🚀 Feature Request
+description: Suggest an improvement or a new feature for the Zynith SEO plugin.
+labels: ['enhancement', 'pending triage']
+title: '[DATE]: [FEATURE NAME]'
+
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Hi. Thanks for taking the time to contribute to the Zynith SEO project!
+
+              Before submitting your feature request, please make sure of the following:
+              - Review the existing feature requests and the project roadmap to ensure your idea hasn't already been suggested.
+              - Provide as much detail as possible to help us understand and implement your suggestion.
+              - Be clear about the problem you're addressing and why this feature would improve the user experience.
+
+    - type: textarea
+      id: problem
+      attributes:
+          label: Current Situation
+          description: Please provide an overview of the current situation and explain the problems or shortcomings you're facing.
+          placeholder: A clear and concise description of the problem or limitation you're addressing.
+      validations:
+          required: true
+
+    - type: textarea
+      id: solution
+      attributes:
+          label: Proposed Change
+          description: Provide a clear and detailed explanation of the solution or feature you're proposing.
+          placeholder: A detailed description of the solution or feature and how it would work.
+      validations:
+          required: true
+
+    - type: textarea
+      id: benefits
+      attributes:
+          label: Benefits
+          description: How would this change benefit users? What improvements can be expected?
+          placeholder: A description of the improvements this feature would bring to Zynith SEO.
+      validations:
+          required: true
+
+    - type: textarea
+      id: additional-context
+      attributes:
+          label: Additional Context
+          description: |
+              Please provide any additional information that could help with the implementation of your feature request.
+              You can include screenshots, configuration files, or any other relevant materials.
+          placeholder: Any additional context that might be useful.
