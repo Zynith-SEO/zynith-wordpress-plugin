@@ -13,7 +13,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-![image](_repo/zynith-seo-cover-image.jpg)
+![image](_repo/zynith-seo-cover-image.png)
 
 # WordPress Fedora Plugin
 
