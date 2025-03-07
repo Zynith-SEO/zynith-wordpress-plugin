@@ -9,7 +9,7 @@ const iconv = require('gulp-iconv-lite');
 
 // Variables
 const pathPackageFile = path.resolve(__dirname, 'package.json');
-const pathPluginFile = path.resolve(__dirname, 'src/php/wp-fedora-core.php');
+const pathPluginFile = path.resolve(__dirname, 'src/php/zynith-seo.php');
 let newPluginVersion = '';
 
 // Delay function (takes time in milliseconds)
@@ -20,43 +20,43 @@ function delayNextTask(time) {
 // Gulp task to convert all PHP files encoding from any encoding (like us-ascii) to utf-8
 gulp.task('convert-php-encoding', function () {
     return gulp
-        .src('./wp-fedora-core/**/*.php') // Include all PHP files inside the 'wp-fedora' directory and subdirectories
+        .src('./zynith-seo/**/*.php') // Include all PHP files inside the 'zynith-seo' directory and subdirectories
         .pipe(iconv({ from: 'us-ascii', to: 'utf-8' })) // Convert encoding to utf-8
-        .pipe(gulp.dest('./wp-fedora-core')); // Save the converted files back to the same directory
+        .pipe(gulp.dest('./zynith-seo')); // Save the converted files back to the same directory
 });
 
 // Copy /dist/assets/ folder to the plugin folder (retain `assets` folder)
 gulp.task('copy-assets-from-dist-to-plugin-folder', function () {
-    return gulp.src('dist/assets/**/*').pipe(gulp.dest('wp-fedora-core/wp-fedora/assets'));
+    return gulp.src('dist/assets/**/*').pipe(gulp.dest('zynith-seo/zynith-seo/assets'));
 });
 
 // Copy /src/assets/img/ folder to the plugin folder inside /assets
 gulp.task('copy-img-to-plugin-assets', function () {
-    return gulp.src('src/assets/img/**/*').pipe(gulp.dest('wp-fedora-core/wp-fedora/assets/img'));
+    return gulp.src('src/assets/img/**/*').pipe(gulp.dest('zynith-seo/zynith-seo/assets/img'));
 });
 
 // Copy /src/php/ folder to the plugin folder
 gulp.task('copy-php-to-plugin-folder', function () {
-    return gulp.src('src/php/**/*').pipe(gulp.dest('wp-fedora-core/wp-fedora'));
+    return gulp.src('src/php/**/*').pipe(gulp.dest('zynith-seo/zynith-seo'));
 });
 
 // Copy /src/assets/*.xsl files to the plugin folder inside /assets
 gulp.task('copy-xsl-to-plugin-assets', function () {
-    return gulp.src('src/assets/*.xsl').pipe(gulp.dest('wp-fedora-core/wp-fedora/assets'));
+    return gulp.src('src/assets/*.xsl').pipe(gulp.dest('zynith-seo/zynith-seo/assets'));
 });
 
-// Ensure the package directories wp-fedora-core/wp-fedora exist
+// Ensure the package directories zynith-seo/zynith-seo exist
 gulp.task('create-plugin-folders', function (done) {
-    const coreDir = path.resolve(__dirname, 'wp-fedora-core');
-    const pluginDir = path.join(coreDir, 'wp-fedora');
+    const coreDir = path.resolve(__dirname, 'zynith-seo');
+    const pluginDir = path.join(coreDir, 'zynith-seo');
 
-    // Check if wp-fedora-core exists, if not create it
+    // Check if zynith-seo exists, if not create it
     if (!fs.existsSync(coreDir)) {
         fs.mkdirSync(coreDir, { recursive: true });
         console.log(`Created directory: ${coreDir}`);
     }
 
-    // Check if wp-fedora directory inside wp-fedora-core exists, if not create it
+    // Check if zynith-seo directory inside zynith-seo exists, if not create it
     if (!fs.existsSync(pluginDir)) {
         fs.mkdirSync(pluginDir, { recursive: true });
         console.log(`Created directory: ${pluginDir}`);
@@ -73,9 +73,9 @@ gulp.task('delay-next-task', async function (done) {
     done();
 });
 
-// Recursively remove empty folders from the wp-fedora directory
+// Recursively remove empty folders from the zynith-seo directory
 gulp.task('delete-empty-folders', function (done) {
-    const distDir = path.resolve(__dirname, 'wp-fedora');
+    const distDir = path.resolve(__dirname, 'zynith-seo');
 
     function removeEmptyDirs(dir) {
         // Check if the directory exists before proceeding
@@ -113,7 +113,7 @@ gulp.task('delete-empty-folders', function (done) {
 // Clean up directories, excluding zip files
 gulp.task('delete-plugin-build-folders', function (done) {
     const distDir = path.resolve(__dirname, 'dist');
-    const pluginDir = path.resolve(__dirname, 'wp-fedora-core');
+    const pluginDir = path.resolve(__dirname, 'zynith-seo');
 
     // Function to clean directories but exclude .zip and critical files like index.php
     function cleanDirectoryExcludingZip(directory) {
@@ -145,16 +145,16 @@ gulp.task('delete-plugin-build-folders', function (done) {
     done();
 });
 
-// Move wp-fedora-core.php one level up
-gulp.task('move-wp-fedora-core-php', function (done) {
-    const sourcePath = 'wp-fedora-core/wp-fedora/wp-fedora-core.php';
-    const targetPath = 'wp-fedora-core/wp-fedora-core.php';
+// Move zynith-seo.php one level up
+gulp.task('move-zynith-seo-php', function (done) {
+    const sourcePath = 'zynith-seo/zynith-seo/zynith-seo.php';
+    const targetPath = 'zynith-seo/zynith-seo.php';
 
     if (fs.existsSync(sourcePath)) {
         fs.renameSync(sourcePath, targetPath);
-        console.log(`Moved wp-fedora-core.php to ${targetPath}`);
+        console.log(`Moved zynith-seo.php to ${targetPath}`);
     } else {
-        console.log('wp-fedora-core.php not found in the plugin folder.');
+        console.log('zynith-seo.php not found in the plugin folder.');
     }
 
     done();
@@ -182,7 +182,7 @@ gulp.task('update-plugin-version', function (done) {
     done();
 });
 
-// Gulp task to dynamically load and zip the entire wp-fedora-core folder
+// Gulp task to dynamically load and zip the entire zynith-seo folder
 gulp.task('zip-plugin-core', async function () {
     const zip = (await import('gulp-zip')).default;
     const pluginDir = 'zynith-seo';
@@ -205,7 +205,7 @@ gulp.task(
         'copy-xsl-to-plugin-assets',
         'convert-php-encoding',
         'delete-empty-folders',
-        'move-wp-fedora-core-php',
+        'move-zynith-seo-php',
         'zip-plugin-core',
         function (done) {
             console.log('Plugin packaged successfully!');
