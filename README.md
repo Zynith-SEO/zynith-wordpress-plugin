@@ -15,7 +15,7 @@
 
 ![image](_repo/zynith-seo-cover-image.png)
 
-# WordPress Fedora Plugin
+# Zynith SEO Plugin
 
 <div align="center">
   <p align="center">
