@@ -19,12 +19,12 @@
 
 <div align="center">
   <p align="center">
-   WP Fedora is a powerful, performance-optimized WordPress distro designed specifically for SEOs. Our community is dedicated to helping SEO professionals maximize their WordPress sites through WP Fedora, and it's available built-in tools and utilities.
+   Zynith SEO is a powerful, performance-optimized WordPress SEO plugin, designed specifically for SEOs. Our community is dedicated to helping SEO professionals maximize their WordPress sites through Zynith SEO, and it's available built-in tools and utilities.
    <br />
    <br />
-   <a href="https://github.com/WPFedora/WordPress-Fedora/issues/new?assignees=&labels=bug%2Cpending+triage&projects=&template=bug_report.yaml">Report Bug</a>
+   <a href="https://github.com/Zynith-SEO/zynith-wordpress-plugin/issues/new?assignees=&labels=bug%2Cpending+triage&projects=&template=bug_report.yaml">Report Bug</a>
    &middot;
-   <a href="https://github.com/WPFedora/WordPress-Fedora/issues/new?assignees=&labels=enhancement%2Cpending+triage&projects=&template=feature_request.yaml">Feature Request</a>
+   <a href="https://github.com/Zynith-SEO/zynith-wordpress-plugin/issues/new?assignees=&labels=enhancement%2Cpending+triage&projects=&template=feature_request.yaml">Feature Request</a>
   </p>
 </div>
 
@@ -49,7 +49,7 @@
     <li><a href="#build-logic">Build Logic</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
+    <!-- <li><a href="#license">License</a></li> -->
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -91,7 +91,7 @@ nvm use
 
 1. Clone the repo.
     ```sh
-    git clone https://github.com/WPFedora/WordPress-Fedora.git
+    git clone https://github.com/Zynith-SEO/zynith-wordpress-plugin.git
     ```
 2. Install NPM packages.
     ```zsh
@@ -134,7 +134,7 @@ Below, you will find our common commands and notes for general usage.
 
 ### Vite Build
 
-Vite will convert all of your `.scss` to `.css`. These files, along with all `.js` files, will all be placed in a `/dist` folder.
+Vite will convert all of your `.scss` to `.css`. These files, along with all `.js` files, will all be placed in a `/dist` folder, and will be minified.
 
 ### Build Plugin Core
 
@@ -142,79 +142,44 @@ This covers the series of tasks that are used to initially build the plugin fold
 
 1. create-plugin-folders
 
-    - This will check to see if folders `wp-fedora-core` and `wp-fedora-core/wp-fedora` both exist. If not, they will be created.
+    - This will check to see if the folder `zynith-seo` exists. If not, this folder will be created.
 
 2. copy-php-to-plugin-folder
 
-    - This copies the `php` folder over to `wp-fedora-core/wp-fedora`.
+    - This copies the `/src/php` folder over to `zynith-seo`.
 
 3. copy-assets-from-dist-to-plugin-folder
 
-    - This copies the `assets` folder from `dist/assets` over to `wp-fedora-core/wp-fedora/assets`.
+    - This copies the `assets` folder from `dist/assets` over to `zynith-seo/assets`.
 
-4. copy-img-to-plugin-assets
+<!-- 4. copy-img-to-plugin-assets
 
-    - This copies the `img` folder from `src/assets/img` over to `wp-fedora-core/wp-fedora/assets/img`.
+    - This copies the `img` folder from `src/assets/img` over to `zynith-seo/assets/img`. -->
 
-5. copy-xsl-to-plugin-assets
+4. copy-xsl-to-plugin-assets
 
-    - This copies the `*.xsl` file from `src/**/*` (which is where the sitemap file is located) over to `wp-fedora-core/wp-fedora/assets`.
+    - This copies the `*.xsl` file from `src/**/*` (which is where the sitemap file is located) over to `zynith-seo/assets`.
 
-6. move-wp-fedora-core-php
-
-    - When the `php` is copied over, the `wp-fedora-core.php` file gets put into the `wp-fedora-core/wp-fedora` folder. This task will move it up one level to the `wp-fedora-core` folder.
-
-7. convert-php-encoding
+5. convert-php-encoding
 
     - With Vite, the PHP files don't get the correct file encoding. This step properly converts them to `utf-8` for WordPress.
 
-8. delete-empty-folders
+6. delete-empty-folders
 
-    - This will recursively delete all empty folders from the parent plugin folder `wp-fedora-core`.
+    - This will recursively delete all empty folders from the parent plugin folder `zynith-seo`.
 
-9. zip-plugin-core
+7. zip-plugin-core
 
-    - This will zip up folder `wp-fedora-core` and name the new zip `wp-fedora-core.zip`.
-
-### Build WordPress Distro
-
-1. download-latest-wordpress-zip
-
-    - This will go to the [WordPress repo](https://github.com/WordPress/WordPress) and identify the latest version number.
-    - Then it will download the latest WP version.
-
-2. unzip-wordpress
-
-    - This will unzip the latest WP version that we just downloaded. The folder name does not change.
-
-3. create-mu-plugins-folder
-
-    - Inside the WP folder that we just unzipped, this will create a new folder under `wp-content` called `mu-plugins`.
-
-4. copy-plugin-to-mu-plugins
-
-    - All of our plugin files inside of `wp-fedora-core` will be copied over to the newly created `mu-plugins` folder.
-
-5. zip-wordpress-distro
-
-    - The updated WP files will get zipped back up, and renamed to `WordPress-Fedora-[version].zip`.
+    - This will zip up folder `zynith-seo` and name the new zip with the current version found in the `package.json` file, example `zynith-seo-10.4.18.zip`.
 
 ### Cleanup Plugin
 
-This covers the series of tasks that are used to clean up the plugin folder after the zip file is created. Found in the `build:dev`, `build:plugin` and `build:wordpress` scripts.
+This covers the series of tasks that are used to clean up the plugin folder after the zip file is created. Found in the `build:dev` and `build:plugin` scripts.
 
 1. delete-plugin-build-folders
 
     - Delete the `/dist` folder that is generated by Vite.
-    - Delete the plugin folder (i.e., `/wp-fedora-core`).
-
-### Cleanup Distro
-
-This covers the series of tasks that are used to clean up the WordPress folders after the WP Fedora distro is created. Found in the `build:wordpress` script.
-
-1. delete-wordpress-build-folders
-    - Delete the WordPress release folder (i.e., `/WordPress-6.6.2`).
-    - Delete the WordPress zip file (i.e., `/WordPress-6.6.2.zip`).
+    - Delete the plugin folder (i.e., `/zynith-seo`).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -222,7 +187,7 @@ This covers the series of tasks that are used to clean up the WordPress folders 
 
 ## Roadmap
 
-We don't have a dedicated roadmap outside of Github. Simply check the [open issues](https://github.com/WPFedora/WordPress-Fedora/issues) for a full list of proposed features (and known issues).
+We don't have a dedicated roadmap outside of Github. Simply check the [open issues](https://github.com/Zynith-SEO/zynith-wordpress-plugin/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -244,11 +209,11 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 <!-- LICENSE -->
 
-## License
+<!-- ## License
 
 Distributed under the MIT License. See `LICENSE.md` for more information.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+<p align="right">(<a href="#top">back to top</a>)</p> -->
 
 <!-- ACKNOWLEDGMENTS -->
 
@@ -266,12 +231,12 @@ Without these people and tools, life would be too complicated.
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/WPFedora/WordPress-Fedora.svg?style=for-the-badge
-[contributors-url]: https://github.com/WPFedora/WordPress-Fedora/graphs/contributors
+[contributors-url]: https://github.com/Zynith-SEO/zynith-wordpress-plugin/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/WPFedora/WordPress-Fedora.svg?style=for-the-badge
-[forks-url]: https://github.com/WPFedora/WordPress-Fedora/network/members
+[forks-url]: https://github.com/Zynith-SEO/zynith-wordpress-plugin/network/members
 [stars-shield]: https://img.shields.io/github/stars/WPFedora/WordPress-Fedora.svg?style=for-the-badge
-[stars-url]: https://github.com/WPFedora/WordPress-Fedora/stargazers
+[stars-url]: https://github.com/Zynith-SEO/zynith-wordpress-plugin/stargazers
 [issues-shield]: https://img.shields.io/github/issues/WPFedora/WordPress-Fedora.svg?style=for-the-badge
-[issues-url]: https://github.com/WPFedora/WordPress-Fedora/issues
+[issues-url]: https://github.com/Zynith-SEO/zynith-wordpress-plugin/issues
 [license-shield]: https://img.shields.io/github/license/WPFedora/WordPress-Fedora.svg?style=for-the-badge
-[license-url]: https://github.com/WPFedora/WordPress-Fedora/blob/main/license.md
+[license-url]: https://github.com/Zynith-SEO/zynith-wordpress-plugin/blob/main/license.md
