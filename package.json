@@ -11,7 +11,7 @@
         "start:dev": "vite",
         "build:dev": "vite build && gulp build-plugin-core",
         "build:plugin": "npm run build:dev && gulp cleanup-plugin",
-        "build:release": "gulp update-plugin-version && npm run build:plugin && npm run build:wordpress",
+        "build:release": "gulp update-plugin-version && npm run build:plugin",
         "version:major": "npm version major",
         "version:minor": "npm version minor",
         "version:patch": "npm version patch"
