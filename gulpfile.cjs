@@ -10,11 +10,18 @@ const iconv = require('gulp-iconv-lite');
 // Variables
 const pathPackageFile = path.resolve(__dirname, 'package.json');
 const pathPluginFile = path.resolve(__dirname, 'src/php/zynith-seo.php');
-let newPluginVersion = '';
 
 // Delay function (takes time in milliseconds)
 function delayNextTask(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+function getPluginVersion() {
+    // Read package.json
+    const packageJson = JSON.parse(fs.readFileSync(pathPackageFile, 'utf8'));
+    const version = packageJson.version;
+
+    return version;
 }
 
 // Gulp task to convert all PHP files encoding from any encoding (like us-ascii) to utf-8
@@ -27,25 +34,25 @@ gulp.task('convert-php-encoding', function () {
 
 // Copy /dist/assets/ folder to the plugin folder (retain `assets` folder)
 gulp.task('copy-assets-from-dist-to-plugin-folder', function () {
-    return gulp.src('dist/assets/**/*').pipe(gulp.dest('zynith-seo/zynith-seo/assets'));
+    return gulp.src('dist/assets/**/*').pipe(gulp.dest('zynith-seo/assets'));
 });
 
 // Copy /src/assets/img/ folder to the plugin folder inside /assets
-gulp.task('copy-img-to-plugin-assets', function () {
-    return gulp.src('src/assets/img/**/*').pipe(gulp.dest('zynith-seo/zynith-seo/assets/img'));
-});
+// gulp.task('copy-img-to-plugin-assets', function () {
+//     return gulp.src('src/assets/img/**/*').pipe(gulp.dest('zynith-seo/assets/img'));
+// });
 
 // Copy /src/php/ folder to the plugin folder
 gulp.task('copy-php-to-plugin-folder', function () {
-    return gulp.src('src/php/**/*').pipe(gulp.dest('zynith-seo/zynith-seo'));
+    return gulp.src('src/php/**/*').pipe(gulp.dest('zynith-seo'));
 });
 
 // Copy /src/assets/*.xsl files to the plugin folder inside /assets
 gulp.task('copy-xsl-to-plugin-assets', function () {
-    return gulp.src('src/assets/*.xsl').pipe(gulp.dest('zynith-seo/zynith-seo/assets'));
+    return gulp.src('src/assets/*.xsl').pipe(gulp.dest('zynith-seo/assets'));
 });
 
-// Ensure the package directories zynith-seo/zynith-seo exist
+// Ensure the package directories zynith-seo exist
 gulp.task('create-plugin-folders', function (done) {
     const coreDir = path.resolve(__dirname, 'zynith-seo');
     const pluginDir = path.join(coreDir, 'zynith-seo');
@@ -145,48 +152,32 @@ gulp.task('delete-plugin-build-folders', function (done) {
     done();
 });
 
-// Move zynith-seo.php one level up
-gulp.task('move-zynith-seo-php', function (done) {
-    const sourcePath = 'zynith-seo/zynith-seo/zynith-seo.php';
-    const targetPath = 'zynith-seo/zynith-seo.php';
-
-    if (fs.existsSync(sourcePath)) {
-        fs.renameSync(sourcePath, targetPath);
-        console.log(`Moved zynith-seo.php to ${targetPath}`);
-    } else {
-        console.log('zynith-seo.php not found in the plugin folder.');
-    }
-
-    done();
-});
-
 // Gulp task to sync the version from package.json to the PHP file
 gulp.task('update-plugin-version', function (done) {
     // Read package.json
-    const packageJson = JSON.parse(fs.readFileSync(pathPackageFile, 'utf8'));
-    newPluginVersion = packageJson.version;
+    const version = getPluginVersion();
 
     // Read PHP file content
     const phpFileContent = fs.readFileSync(pathPluginFile, 'utf8');
 
     // Replace the version in the PHP file's comment header
-    const updatedPhpFileContent = phpFileContent.replace(
-        /Version:\s*\d+\.\d+\.\d+/,
-        `Version:           ${newPluginVersion}`
-    );
+    const updatedPhpFileContent = phpFileContent.replace(/Version:\s*\d+\.\d+\.\d+/, `Version:           ${version}`);
 
     // Write updated content back to the PHP file
     fs.writeFileSync(pathPluginFile, updatedPhpFileContent);
 
-    console.log(`PHP file updated to version ${newPluginVersion}`);
+    console.log(`PHP file updated to version ${version}`);
     done();
 });
 
 // Gulp task to dynamically load and zip the entire zynith-seo folder
 gulp.task('zip-plugin-core', async function () {
+    // Read package.json
+    const version = getPluginVersion();
+
     const zip = (await import('gulp-zip')).default;
     const pluginDir = 'zynith-seo';
-    const outputName = `zynith-seo-${newPluginVersion}.zip`;
+    const outputName = `zynith-seo-${version}.zip`;
 
     return gulp
         .src(`${pluginDir}/**/*`, { base: '.' }) // Include the folder itself and all its contents
@@ -201,11 +192,10 @@ gulp.task(
         'create-plugin-folders',
         'copy-php-to-plugin-folder',
         'copy-assets-from-dist-to-plugin-folder',
-        'copy-img-to-plugin-assets',
+        // 'copy-img-to-plugin-assets', ACTIVATE WHEN IMAGES ARE ADDED TO PLUGIN
         'copy-xsl-to-plugin-assets',
         'convert-php-encoding',
         'delete-empty-folders',
-        'move-zynith-seo-php',
         'zip-plugin-core',
         function (done) {
             console.log('Plugin packaged successfully!');
