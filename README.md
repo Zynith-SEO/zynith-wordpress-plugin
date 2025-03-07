@@ -90,13 +90,13 @@ nvm use
 ### Installation
 
 1. Clone the repo.
-   ```sh
-   git clone https://github.com/WPFedora/WordPress-Fedora.git
-   ```
+    ```sh
+    git clone https://github.com/WPFedora/WordPress-Fedora.git
+    ```
 2. Install NPM packages.
-   ```zsh
-   npm install
-   ```
+    ```zsh
+    npm install
+    ```
 3. Run the start command to watch and build files.
 
 ```zsh
@@ -112,19 +112,19 @@ npm run start:dev
 Below, you will find our common commands and notes for general usage.
 
 1. Run `npm run build:dev`.
-   - When you build in dev, the plugin folder **IS NOT ZIPPED**. This is for those situations where you're working with local instance of WordPress using XAMP, LAMP, MAMP, etc. or even the LocalWP tool (which we use). Those steps are:
-     - Build the new plugin folder.
-     - Delete the current folder in your WP website.
-     - Copy your new plugin folder into the website's plugins folder.
+    - When you build in dev, the plugin folder **IS NOT ZIPPED**. This is for those situations where you're working with local instance of WordPress using XAMP, LAMP, MAMP, etc. or even the LocalWP tool (which we use). Those steps are:
+        - Build the new plugin folder.
+        - Delete the current folder in your WP website.
+        - Copy your new plugin folder into the website's plugins folder.
 2. Run `npm run build:plugin`.
 
-   - When you build the plugin, the plugin folder **IS ZIPPED** and ready for upload to a WP website.
+    - When you build the plugin, the plugin folder **IS ZIPPED** and ready for upload to a WP website.
 
 3. Run `npm run start:dev`.
 
-   - This is runs the default `vite` command. The terminal will tell you to open the browser to a `localhost` port. **We do not use the browser.**
-   - A custom hot reload plugin is located in the Vite config file to watch all files in the `/src` folder.
-   - Each time a file is changed, the hot reload will trigger a `npm run build:dev`.
+    - This is runs the default `vite` command. The terminal will tell you to open the browser to a `localhost` port. **We do not use the browser.**
+    - A custom hot reload plugin is located in the Vite config file to watch all files in the `/src` folder.
+    - Each time a file is changed, the hot reload will trigger a `npm run build:dev`.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -142,62 +142,62 @@ This covers the series of tasks that are used to initially build the plugin fold
 
 1. create-plugin-folders
 
-   - This will check to see if folders `wp-fedora-core` and `wp-fedora-core/wp-fedora` both exist. If not, they will be created.
+    - This will check to see if folders `wp-fedora-core` and `wp-fedora-core/wp-fedora` both exist. If not, they will be created.
 
 2. copy-php-to-plugin-folder
 
-   - This copies the `php` folder over to `wp-fedora-core/wp-fedora`.
+    - This copies the `php` folder over to `wp-fedora-core/wp-fedora`.
 
 3. copy-assets-from-dist-to-plugin-folder
 
-   - This copies the `assets` folder from `dist/assets` over to `wp-fedora-core/wp-fedora/assets`.
+    - This copies the `assets` folder from `dist/assets` over to `wp-fedora-core/wp-fedora/assets`.
 
 4. copy-img-to-plugin-assets
 
-   - This copies the `img` folder from `src/assets/img` over to `wp-fedora-core/wp-fedora/assets/img`.
+    - This copies the `img` folder from `src/assets/img` over to `wp-fedora-core/wp-fedora/assets/img`.
 
 5. copy-xsl-to-plugin-assets
 
-   - This copies the `*.xsl` file from `src/**/*` (which is where the sitemap file is located) over to `wp-fedora-core/wp-fedora/assets`.
+    - This copies the `*.xsl` file from `src/**/*` (which is where the sitemap file is located) over to `wp-fedora-core/wp-fedora/assets`.
 
 6. move-wp-fedora-core-php
 
-   - When the `php` is copied over, the `wp-fedora-core.php` file gets put into the `wp-fedora-core/wp-fedora` folder. This task will move it up one level to the `wp-fedora-core` folder.
+    - When the `php` is copied over, the `wp-fedora-core.php` file gets put into the `wp-fedora-core/wp-fedora` folder. This task will move it up one level to the `wp-fedora-core` folder.
 
 7. convert-php-encoding
 
-   - With Vite, the PHP files don't get the correct file encoding. This step properly converts them to `utf-8` for WordPress.
+    - With Vite, the PHP files don't get the correct file encoding. This step properly converts them to `utf-8` for WordPress.
 
 8. delete-empty-folders
 
-   - This will recursively delete all empty folders from the parent plugin folder `wp-fedora-core`.
+    - This will recursively delete all empty folders from the parent plugin folder `wp-fedora-core`.
 
 9. zip-plugin-core
 
-   - This will zip up folder `wp-fedora-core` and name the new zip `wp-fedora-core.zip`.
+    - This will zip up folder `wp-fedora-core` and name the new zip `wp-fedora-core.zip`.
 
 ### Build WordPress Distro
 
 1. download-latest-wordpress-zip
 
-   - This will go to the [WordPress repo](https://github.com/WordPress/WordPress) and identify the latest version number.
-   - Then it will download the latest WP version.
+    - This will go to the [WordPress repo](https://github.com/WordPress/WordPress) and identify the latest version number.
+    - Then it will download the latest WP version.
 
 2. unzip-wordpress
 
-   - This will unzip the latest WP version that we just downloaded. The folder name does not change.
+    - This will unzip the latest WP version that we just downloaded. The folder name does not change.
 
 3. create-mu-plugins-folder
 
-   - Inside the WP folder that we just unzipped, this will create a new folder under `wp-content` called `mu-plugins`.
+    - Inside the WP folder that we just unzipped, this will create a new folder under `wp-content` called `mu-plugins`.
 
 4. copy-plugin-to-mu-plugins
 
-   - All of our plugin files inside of `wp-fedora-core` will be copied over to the newly created `mu-plugins` folder.
+    - All of our plugin files inside of `wp-fedora-core` will be copied over to the newly created `mu-plugins` folder.
 
 5. zip-wordpress-distro
 
-   - The updated WP files will get zipped back up, and renamed to `WordPress-Fedora-[version].zip`.
+    - The updated WP files will get zipped back up, and renamed to `WordPress-Fedora-[version].zip`.
 
 ### Cleanup Plugin
 
@@ -205,16 +205,16 @@ This covers the series of tasks that are used to clean up the plugin folder afte
 
 1. delete-plugin-build-folders
 
-   - Delete the `/dist` folder that is generated by Vite.
-   - Delete the plugin folder (i.e., `/wp-fedora-core`).
+    - Delete the `/dist` folder that is generated by Vite.
+    - Delete the plugin folder (i.e., `/wp-fedora-core`).
 
 ### Cleanup Distro
 
 This covers the series of tasks that are used to clean up the WordPress folders after the WP Fedora distro is created. Found in the `build:wordpress` script.
 
 1. delete-wordpress-build-folders
-   - Delete the WordPress release folder (i.e., `/WordPress-6.6.2`).
-   - Delete the WordPress zip file (i.e., `/WordPress-6.6.2.zip`).
+    - Delete the WordPress release folder (i.e., `/WordPress-6.6.2`).
+    - Delete the WordPress zip file (i.e., `/WordPress-6.6.2.zip`).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
