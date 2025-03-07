@@ -1,0 +1,42 @@
+{
+  "name": "wp-fedora",
+  "version": "1.4.0",
+  "description": "WordPress Fedora is a custom-built distribution of WordPress, designed for SEO professionals and advanced users who seek a streamlined and efficient environment tailored specifically for optimizing and managing SEO-driven websites.",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "vite",
+    "build:dev": "vite build && gulp build-plugin-core",
+    "build:wordpress": "npm run build:dev && gulp build-wordpress-distro && gulp cleanup-plugin && gulp cleanup-distro",
+    "build:plugin": "npm run build:dev && gulp cleanup-plugin",
+    "build:release": "gulp update-plugin-version && npm run build:plugin && npm run build:wordpress",
+    "version:major": "npm version major",
+    "version:minor": "npm version minor",
+    "version:patch": "npm version patch"
+  },
+  "author": "Jared Ledbetter",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.7.9",
+    "adm-zip": "^0.5.16",
+    "axios": "^1.7.7",
+    "del": "^8.0.0",
+    "eslint": "9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "glob": "^11.0.0",
+    "gulp": "^5.0.0",
+    "gulp-iconv-lite": "^0.0.1",
+    "gulp-zip": "^6.0.0",
+    "npm-version": "^1.1.0",
+    "prettier": "^3.3.3",
+    "sass": "^1.80.2",
+    "typescript": "^5.6.3",
+    "unzipper": "^0.12.3",
+    "vite": "^5.4.9"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3"
+  },
+  "type": "module"
+}
