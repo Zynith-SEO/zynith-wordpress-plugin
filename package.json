@@ -1,8 +1,12 @@
 {
-  "name": "wp-fedora",
-  "version": "1.4.0",
-  "description": "WordPress Fedora is a custom-built distribution of WordPress, designed for SEO professionals and advanced users who seek a streamlined and efficient environment tailored specifically for optimizing and managing SEO-driven websites.",
+  "name": "zynith-seo",
+  "version": "10.4.18",
+  "description": "Unleash the full power of search engine optimization with Zynith. Elevate your online presence using our cutting-edge SEO solutions.",
   "main": "index.js",
+  "author": {
+    "name": "Zynith SEO",
+    "url": "https://zynith.app/"
+  },
   "scripts": {
     "start:dev": "vite",
     "build:dev": "vite build && gulp build-plugin-core",
@@ -13,8 +17,6 @@
     "version:minor": "npm version minor",
     "version:patch": "npm version patch"
   },
-  "author": "Jared Ledbetter",
-  "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.7.9",
     "adm-zip": "^0.5.16",
