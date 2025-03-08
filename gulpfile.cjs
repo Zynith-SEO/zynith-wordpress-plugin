@@ -187,7 +187,7 @@ gulp.task('zip-plugin-core', async function () {
 
 // Build task (run all steps in sequence)
 gulp.task(
-    'build-plugin-core',
+    'build-plugin',
     gulp.series(
         'create-plugin-folders',
         'copy-php-to-plugin-folder',

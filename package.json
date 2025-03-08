@@ -1,6 +1,6 @@
 {
     "name": "zynith-seo",
-    "version": "10.4.19",
+    "version": "10.4.18",
     "description": "Unleash the full power of search engine optimization with Zynith. Elevate your online presence using our cutting-edge SEO solutions.",
     "main": "index.js",
     "author": {
@@ -9,7 +9,7 @@
     },
     "scripts": {
         "start:dev": "vite",
-        "build:dev": "vite build && gulp build-plugin-core",
+        "build:dev": "vite build && gulp build-plugin",
         "build:plugin": "npm run build:dev && gulp cleanup-plugin",
         "build:release": "gulp update-plugin-version && npm run build:plugin",
         "version:major": "npm version major",

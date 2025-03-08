@@ -136,7 +136,7 @@ Below, you will find our common commands and notes for general usage.
 
 Vite will convert all of your `.scss` to `.css`. These files, along with all `.js` files, will all be placed in a `/dist` folder, and will be minified.
 
-### Build Plugin Core
+### Build Plugin
 
 This covers the series of tasks that are used to initially build the plugin folder. Found in both `build:dev` and `build:plugin` scripts.
 
