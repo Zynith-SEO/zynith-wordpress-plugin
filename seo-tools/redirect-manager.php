@@ -18,7 +18,6 @@ function zynith_seo_redirects_menu() {
 }
 add_action('admin_menu', 'zynith_seo_redirects_menu');
 
-// Render the Redirects admin page
 function zynith_seo_render_redirects_page() {
     global $wpdb;
     $table_name = $wpdb->prefix . 'zynith_redirects';
@@ -71,12 +70,38 @@ function zynith_seo_render_redirects_page() {
         echo '<form method="post"><input type="submit" name="create_redirects_table" class="button-primary" value="Create Redirects Database" /></form></div>';
     }
     else {
+        // Handle Import CSV
+        if (isset($_POST['import_redirects']) && !empty($_FILES['redirect_csv']['tmp_name'])) {
+            zynith_seo_import_redirects($_FILES['redirect_csv']);
+        }
+
+        // Handle Export CSV
+        if (isset($_POST['export_redirects'])) {
+            zynith_seo_export_redirects();
+        }
+
         $results = $wpdb->get_results("SELECT * FROM $table_name ORDER BY timestamp DESC");
         $site_url = rtrim(get_site_url(), '/'); // Get the site URL for prepending
         ?>
         <div class="wrap">
             <h1><?php _e('Zynith SEO Redirect Manager', 'zynith-seo'); ?></h1>
-            <form method="post" style="display: flex; gap: 1px; margin: 11px 0;">
+
+            <!-- Import & Export Buttons -->
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                <!-- Import Form -->
+                <form method="post" enctype="multipart/form-data" style="display: flex; align-items: center; gap: 5px;">
+                    <input type="file" name="redirect_csv" accept=".csv" required>
+                    <input type="submit" name="import_redirects" class="button-primary" value="Import CSV">
+                </form>
+
+                <!-- Export Form -->
+                <form method="post">
+                    <input type="submit" name="export_redirects" class="button-secondary" value="Export CSV">
+                </form>
+            </div>
+
+            <!-- Add Redirect Form -->
+            <form method="post" style="display: flex; gap: 5px; margin: 10px 0;">
                 <input type="text" name="source_url" placeholder="Source URL (e.g., /pricing-2/)" style="flex: 0.4;" required>
                 <input type="text" name="target_url" placeholder="Target URL (e.g., <?php echo esc_url($site_url); ?>/)" style="flex: 0.4;" required>
                 <select name="redirect_type">
@@ -85,6 +110,8 @@ function zynith_seo_render_redirects_page() {
                 </select>
                 <input type="submit" name="add_redirect" class="button-primary" value="Add Redirect">
             </form>
+
+            <!-- Redirects Table -->
             <table class="widefat fixed" cellspacing="0" style="margin-top: 20px;">
                 <thead>
                     <tr>
@@ -98,8 +125,8 @@ function zynith_seo_render_redirects_page() {
     <?php if ($results) : ?>
         <?php foreach ($results as $row) : ?>
             <tr>
-                <td><?php echo esc_url(trailingslashit($site_url . $row->source_url)); // Ensure trailing slash ?></td>
-                <td><?php echo esc_url(trailingslashit($row->target_url)); // Ensure trailing slash ?></td>
+                <td><?php echo esc_url(trailingslashit($site_url . $row->source_url)); ?></td>
+                <td><?php echo esc_url(trailingslashit($row->target_url)); ?></td>
                 <td><?php echo esc_html($row->redirect_type); ?></td>
                 <td>
                     <form method="post">
@@ -116,6 +143,7 @@ function zynith_seo_render_redirects_page() {
     <?php endif; ?>
 </tbody>
             </table>
+
             <form method="post" style="margin-top: 20px;">
                 <input type="submit" name="delete_redirects_table" class="button-secondary" value="Delete Table" />
             </form>
@@ -123,6 +151,81 @@ function zynith_seo_render_redirects_page() {
         <?php
     }
 }
+
+function zynith_seo_export_redirects() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'zynith_redirects';
+
+    // Fetch redirects
+    $redirects = $wpdb->get_results("SELECT source_url, target_url, redirect_type FROM $table_name", ARRAY_A);
+
+    if (empty($redirects)) {
+        echo '<div class="notice notice-warning"><p>No redirects available for export.</p></div>';
+        return;
+    }
+
+    // Clear any output buffer to avoid conflicts
+    ob_clean();
+    ob_start();
+
+    // Set headers for CSV download
+    header('Content-Type: text/csv; charset=utf-8');
+    header('Content-Disposition: attachment; filename=redirects.csv');
+    header('Pragma: no-cache');
+    header('Expires: 0');
+
+    $output = fopen('php://output', 'w');
+    fputcsv($output, ['Source URL', 'Target URL', 'Redirect Type']); // Header row
+
+    foreach ($redirects as $redirect) {
+        fputcsv($output, $redirect);
+    }
+
+    fclose($output);
+    ob_end_flush();
+    exit;
+}
+
+
+function zynith_seo_import_redirects($file) {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'zynith_redirects';
+
+    if (($handle = fopen($file['tmp_name'], 'r')) !== FALSE) {
+        fgetcsv($handle); // Skip header row
+
+        while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
+            $source_url = trailingslashit(parse_url(esc_url_raw($data[0]), PHP_URL_PATH));
+            $target_url = esc_url_raw($data[1]);
+            $redirect_type = in_array($data[2], ['301', '302']) ? $data[2] : '301';
+
+            // Check if the redirect already exists
+            $existing_redirect = $wpdb->get_var($wpdb->prepare(
+                "SELECT id FROM $table_name WHERE source_url = %s",
+                $source_url
+            ));
+
+            if (!$existing_redirect) {
+                $wpdb->insert(
+                    $table_name,
+                    [
+                        'source_url' => $source_url,
+                        'target_url' => $target_url,
+                        'redirect_type' => $redirect_type,
+                        'timestamp' => current_time('mysql')
+                    ],
+                    ['%s', '%s', '%s', '%s']
+                );
+            }
+        }
+
+        fclose($handle);
+        echo '<div class="notice notice-success"><p>Redirects imported successfully.</p></div>';
+    } else {
+        echo '<div class="notice notice-error"><p>Error reading CSV file.</p></div>';
+    }
+}
+
 
 // Apply redirects on frontend
 function zynith_seo_handle_redirects() {
