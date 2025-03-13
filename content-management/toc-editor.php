@@ -178,7 +178,7 @@ function zynith_seo_toc_generate() {
 
     $list_style = 'list-style: none;'; // Default to no list style
     if ($list_delimiter === 'bullet') {
-        $list_style = 'list-style: disc; margin-left: 20px;';
+        $list_style = 'list-style: disc;';
     }
     elseif ($list_delimiter === 'dash') {
         $list_style = 'list-style: none;'; // Add custom dash styles manually
@@ -189,8 +189,10 @@ function zynith_seo_toc_generate() {
 
     $output = '<details class="zynith-toc ' . esc_attr($custom_css_class) . ($sticky_toc ? ' sticky' : '') . '" ' . $default_state_attribute . '>';
     $output .= '<summary>' . esc_html($toc_title) . '</summary>';
-    $output .= '<ul style="' . esc_attr($list_style) . '">';
+    $output .= '<ul style="' . esc_attr($list_style) . ' padding: 0;">';
 
+    // Keep track of current nesting level and numbering
+    $heading_count  = 0;
     $current_level = 0;
     foreach ($matches as $match) {
         $level = intval($match[1]);
@@ -199,6 +201,9 @@ function zynith_seo_toc_generate() {
 
         if (!in_array("h{$level}", get_option('zynith_toc_heading_levels', ['h2', 'h3']))) continue; // Skip unselected heading levels
         
+        // Increment the sequential heading count (for numbering)
+        $heading_count++;
+
         $delimiter = '';
         if ($list_delimiter === 'bullet') {
             $delimiter = ''; // No additional bullet since list-style is applied
@@ -219,7 +224,10 @@ function zynith_seo_toc_generate() {
             $current_level--;
         }
 
-        $output .= '<li>' . ($enable_numbering ? "{$current_level}. " : '') . $delimiter . '<a href="#' . esc_attr($id) . '">' . esc_html($title) . '</a></li>';
+        // Build the actual list item
+        $output .= '<li>';
+        if ($enable_numbering) $output .= $heading_count . '. ';
+        $output .= $delimiter . '<a href="#' . esc_attr($id) . '">' . esc_html($title) . '</a></li>';
     }
 
     while ($current_level > 0) {
