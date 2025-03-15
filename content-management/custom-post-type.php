@@ -10,20 +10,18 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// Create a Custom Post Types management page under ZYNITH SEO Dashboard
 function zynith_seo_add_cpt_menu() {
     add_submenu_page(
-        'zynith_seo_dashboard',      // Parent slug under ZYNITH SEO
-        'Custom Post Types',         // Page title
-        'Custom Post Types',         // Menu title
-        'manage_options',            // Capability
-        'zynith-seo-cpt',            // Menu slug
-        'zynith_seo_cpt_admin_page'  // Callback function
+        'zynith_seo_dashboard',      
+        'Custom Post Types',         
+        'Custom Post Types',         
+        'manage_options',            
+        'zynith-seo-cpt',            
+        'zynith_seo_cpt_admin_page'  
     );
 }
 add_action('admin_menu', 'zynith_seo_add_cpt_menu');
 
-// Admin page for managing CPTs
 function zynith_seo_cpt_admin_page() {
     // Handle form submissions
     if (isset($_POST['zynith_seo_save_cpt'])) {
@@ -31,8 +29,8 @@ function zynith_seo_cpt_admin_page() {
         add_settings_error('zynith_seo_messages', 'cpt_saved', 'Custom Post Type saved successfully.', 'success');
     }
     
-    if (isset($_GET['delete_cpt'])) {
-        zynith_seo_delete_cpt(sanitize_text_field($_GET['delete_cpt']));
+    if (isset($_POST['delete_cpt'])) {
+        zynith_seo_delete_cpt(sanitize_text_field($_POST['delete_cpt']));
         add_settings_error('zynith_seo_messages', 'cpt_deleted', 'Custom Post Type deleted successfully.', 'success');
     }
 
@@ -40,6 +38,7 @@ function zynith_seo_cpt_admin_page() {
     ?>
     <div class="wrap">
         <h1>Custom Post Types</h1>
+
         <h2>Add New Custom Post Type</h2>
         <form method="post">
             <table class="form-table">
@@ -54,17 +53,38 @@ function zynith_seo_cpt_admin_page() {
             </table>
             <p class="submit"><input type="submit" name="zynith_seo_save_cpt" class="button-primary" value="Save Custom Post Type"></p>
         </form>
+
         <h2>Manage Custom Post Types</h2>
-        <ul>
-            <?php 
-            $cpts = get_option('zynith_seo_cpts', []);
-            foreach ($cpts as $cpt): ?>
-                <li>
-                    <strong><?php echo esc_html($cpt['label']); ?></strong> (<?php echo esc_html($cpt['slug']); ?>)
-                    <a href="?page=zynith-seo-cpt&delete_cpt=<?php echo esc_attr($cpt['slug']); ?>" class="button-link-delete">Delete</a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+        <table class="widefat fixed">
+            <thead>
+                <tr>
+                    <th style="width: 40%;">CPT Label</th>
+                    <th style="width: 40%;">Slug</th>
+                    <th style="width: 20%;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                $cpts = get_option('zynith_seo_cpts', []);
+                if (!empty($cpts)) {
+                    foreach ($cpts as $cpt): ?>
+                        <tr>
+                            <td><strong><?php echo esc_html($cpt['label']); ?></strong></td>
+                            <td><?php echo esc_html($cpt['slug']); ?></td>
+                            <td>
+                                <form method="post" style="display:inline;">
+                                    <input type="hidden" name="delete_cpt" value="<?php echo esc_attr($cpt['slug']); ?>">
+                                    <button type="submit" class="button button-secondary" onclick="return confirm('Are you sure you want to delete this CPT?');">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach;
+                } else {
+                    echo '<tr><td colspan="3">No custom post types found.</td></tr>';
+                }
+                ?>
+            </tbody>
+        </table>
     </div>
     <?php
 }
