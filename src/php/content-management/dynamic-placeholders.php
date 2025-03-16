@@ -2,7 +2,7 @@
 /**
  * Plugin Name:    Zynith SEO - Dynamic Placeholders
  * Description:    Replaces custom placeholders (e.g. %%title%%, %%date%%, etc.) in post content.
- * Version:        0.0.1
+ * Version:        0.0.2
  * Author:         Zynith SEO
  */
 
@@ -24,8 +24,8 @@ function zynithseo_replace_placeholders_in_content($content, $type, $object) {
     $timezone = get_option('timezone_string') ? get_option('timezone_string') : 'UTC';
     
     $metadata = [
-        'sitetitle'     => esc_html(get_bloginfo('name') ?? ''),
-        'tagline'       => esc_html(get_bloginfo('description') ?? ''),
+        'sitetitle'     => get_bloginfo('name'),
+        'tagline'       => get_bloginfo('description'),
         'home_url'      => esc_url(home_url() ?? ''),
         'currentyear'   => date('Y'),
         'object_id'     => '',
@@ -40,7 +40,7 @@ function zynithseo_replace_placeholders_in_content($content, $type, $object) {
         case 'taxonomy':
             $metadata['object_id']      = isset($object->term_id) ? $object->term_id : '';
             $metadata['title']          = $object->name ?: '';
-            $metadata['url']            = esc_url(get_term_link($metadata['object_id'], $object->taxonomy) ?? '');
+            $metadata['url']            = rawurldecode(get_term_link($metadata['object_id'], $object->taxonomy));
             $metadata['post_date']      = current_time('Y-m-d');
             $metadata['modified_date']  = current_time('Y-m-d');	
             $metadata['author_name']    = get_the_author_meta('display_name', get_current_user_id());
@@ -48,9 +48,8 @@ function zynithseo_replace_placeholders_in_content($content, $type, $object) {
         case 'author':
             $metadata['object_id']      = isset($object->ID) ? $object->ID : '';
             $metadata['title']          = sanitize_text_field($object->display_name);
-            $metadata['url']            = esc_url(get_author_posts_url($metadata['object_id'], $object->user_nicename) ?? '');
+            $metadata['url']            = rawurldecode(get_author_posts_url($metadata['object_id'], $object->user_nicename));
             $metadata['author_name']    = sanitize_text_field($object->display_name);
-            
             $registered                 = new DateTime($object->user_registered);
             $metadata['post_date']      = $registered->format('Y-m-d');
             $metadata['modified_date']  = current_time('Y-m-d');
@@ -58,13 +57,13 @@ function zynithseo_replace_placeholders_in_content($content, $type, $object) {
         case 'post':
             $metadata['object_id']      = isset($object->ID) ? $object->ID : '';
             $metadata['title']          = sanitize_text_field(get_the_title($metadata['object_id']));
-            $metadata['url']            = esc_url(get_permalink($metadata['object_id']) ?? '');
+            $metadata['url']            = rawurldecode(get_permalink($object->ID));
             $metadata['post_date']      = get_the_date('Y-m-d\TH:i:sP', $post);
             $metadata['author_name']    = sanitize_text_field(get_the_author_meta('display_name', $object->post_author));
-            $metadata['modified_date'] = get_post_modified_time('Y-m-d\TH:i:sP', false, $post, false);
+            $metadata['modified_date']  = get_post_modified_time('Y-m-d\TH:i:sP', false, $post, false);
             break;
         case 'home':
-            $metadata['url'] = $metadata['home_url'];
+            $metadata['url'] = rawurldecode(home_url());
             break;
         default:
             break;
