@@ -161,7 +161,13 @@ gulp.task('update-plugin-version', function (done) {
     const phpFileContent = fs.readFileSync(pathPluginFile, 'utf8');
 
     // Replace the version in the PHP file's comment header
-    const updatedPhpFileContent = phpFileContent.replace(/Version:\s*\d+\.\d+\.\d+/, `Version:           ${version}`);
+    let updatedPhpFileContent = phpFileContent.replace(/Version:\s*\d+\.\d+\.\d+/, `Version:           ${version}`);
+
+    // Replace the version in the define statement
+    updatedPhpFileContent = updatedPhpFileContent.replace(
+        /define\(\s*'ZYNITH_SEO_VERSION'\s*,\s*'\d+\.\d+\.\d+'\s*\)/,
+        `define('ZYNITH_SEO_VERSION', '${version}')`
+    );
 
     // Write updated content back to the PHP file
     fs.writeFileSync(pathPluginFile, updatedPhpFileContent);
