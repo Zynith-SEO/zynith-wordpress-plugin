@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Add Alt Text to Media
- * Description: Zynith SEO module to automatically set the ALT text of images based on the file name.
- * Version:     1.0.0
- * Author:      Zynith SEO
-*/
+
 function zynith_seo_add_alt_text($post_ID) {
     
     // Only proceed if this is indeed an image.

@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - .htaccess Editor
- * Description: This module adds an .htaccess Editor under the ZYNITH SEO menu, allowing you to edit the .htaccess file live using the WordPress admin UI. Only works if the server is Apache.
- * Version:     1.0.1
- * Author:      Zynith SEO
-*/
+
 defined('ABSPATH') or exit;
 
 // Check if the server is Apache before adding the menu

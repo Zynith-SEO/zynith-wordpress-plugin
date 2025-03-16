@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name: ZYNITH SEO RSS Disabler
-Description: Disables all RSS feeds and removes RSS feed links from the <head> section.
-Version: 1.0
-Author: ZYNITH SEO
-*/
 
 // Function to remove RSS feed links from the <head> section
 function zynith_seo_disable_rss_feed_links() {

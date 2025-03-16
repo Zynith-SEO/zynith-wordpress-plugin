@@ -1,10 +1,5 @@
 <?php
-/*
- * Plugin Name: ZYNITH SEO - On-page Schema Editor Metabox
- * Description: Adds a schema editor metabox on pages, posts, and custom post types for quick on-page schema management.
- * Version: 1.0.3
- * Author: ZYNITH SEO
- */
+
 defined('ABSPATH') or exit;
 
 function zynith_seo_create_schema_table() {

@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name: Zynith SEO - Admin Search by Title Only
-Description: Limits the admin search to page titles only in the Pages section.
-Version: 1.0.1
-Author: Zynith SEO
-*/
 
 if (!defined('ABSPATH')) exit;
 

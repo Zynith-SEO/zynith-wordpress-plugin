@@ -1,13 +1,6 @@
 <?php
-/*
-Plugin Name: Zynith SEO Deferment Manager
-Description: Manage JavaScript deferment, lazy loading, critical preloading, and dynamic hero image optimization for improved performance.
-Version: 3.3.1
-Author: Zynith SEO
-*/
+
 if (!defined('ABSPATH')) exit;
-
-
 
 // Add the Deferment Manager submenu
 function zynith_seo_deferment_manager_menu() {

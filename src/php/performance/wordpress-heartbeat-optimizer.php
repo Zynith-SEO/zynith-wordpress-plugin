@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name: ZYNITH SEO Heartbeat Optimizer
-Description: Optimize the WordPress Heartbeat API frequency.
-Version: 1.0
-Author: ZYNITH SEO
-*/
 
 // Modify the Heartbeat API frequency
 function zynith_seo_optimize_heartbeat( $settings ) {

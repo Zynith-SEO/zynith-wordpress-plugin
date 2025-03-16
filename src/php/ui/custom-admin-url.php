@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Custom Admin URL
- * Description: Allows users to set a custom login URL and blocks default login paths by returning a 404 error.
- * Version:     1.0.0
- * Author:      Zynith SEO
- */
+
 defined('ABSPATH') or exit;
 
 // Add the custom login URL setting field to the main Zynith SEO settings page

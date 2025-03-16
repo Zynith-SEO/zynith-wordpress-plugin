@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name: ZYNITH SEO - Admin Footer Customizer
-Description: Replaces the default WordPress footer message with a custom message.
-Version: 1.0.1
-Author: ZYNITH SEO
-*/
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;

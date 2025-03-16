@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Script Manager
- * Description: Zynith SEO module to manage scripts on a per-page/post basis with the ability to create, retrieve, and delete scripts. Supports pages, posts, custom post types, categories, tags, and authors.
- * Version:     1.2.5
- * Author:      Zynith SEO
-*/
+
 defined('ABSPATH') or exit;
 
 // Add the Script Manager menu under Zynith SEO

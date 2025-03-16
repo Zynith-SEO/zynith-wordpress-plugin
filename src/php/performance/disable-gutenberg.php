@@ -1,10 +1,4 @@
 <?php
-/**
- * Module Name: Zynith SEO - Disable Gutenberg
- * Description: Disables Gutenberg editor and enables the Classic Editor for posts, pages, and custom post types. Removes Gutenberg styles from both the admin and the front end.
- * Version:     1.0.1
- * Author:      Zynith SEO
-*/
 
 // Disable Gutenberg for posts, pages, and custom post types
 add_filter('use_block_editor_for_post', '__return_false', 10);

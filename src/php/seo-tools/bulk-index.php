@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Bulk Index
- * Description: Adds “Mark as Noindex/Index” options to the bulk-edit dropdown in the All Posts/Pages list.
- * Version:     1.0.0
- * Author:      Zynith SEO
-*/
+
 defined('ABSPATH') or exit;
 
 // Add two new custom bulk actions to Posts & Pages

@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name: ZYNITH SEO Darkmode UI
-Description: Provides a modern dark mode for the WordPress admin interface, disabling light mode when active.
-Version: 1.2
-Author: ZYNITH SEO
-*/
 
 // Enqueue dark mode CSS for the admin area with cache-busting
 function zynith_seo_enqueue_darkmode_ui() {

@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Remove Dashboard Widgets
- * Description: Removes all default WordPress dashboard widgets for a cleaner dashboard.
- * Version:     1.1.2
- * Author:      Zynith SEO
-*/
+
 defined('ABSPATH') or exit;
 
 // Remove default WordPress dashboard widgets

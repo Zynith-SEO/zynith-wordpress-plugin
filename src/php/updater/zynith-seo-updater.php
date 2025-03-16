@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Plugin Updater
- * Description: Handles plugin updates and related functionality.
- * Version:     1.0.6
- * Author:      Zynith SEO
- */
+
 defined('ABSPATH') or exit;
 
 // Define constants for cache

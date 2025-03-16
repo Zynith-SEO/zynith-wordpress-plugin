@@ -1,10 +1,4 @@
 <?php
-/**
- * Module Name: Zynith SEO - Meta Robots Settings
- * Description: Adds a meta box for robots "No Index" and "No Follow" settings in posts, pages, and CPTs. Disables WordPress default robots tag, and adds a custom robots tag.
- * Version:     1.0.2
- * Author:      Zynith SEO
-*/
 
 // Disable WordPress default robots meta tag
 remove_action('wp_head', 'wp_robots', 1);

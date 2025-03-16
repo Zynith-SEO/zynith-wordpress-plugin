@@ -1,10 +1,4 @@
 <?php
-/*
-Module Name:    Move Plugin File Editor
-Description:    Moves the Plugin File Editor to the last option under the Plugins menu.
-Author:         ZYNITH SEO
-Version:        1.0.0
-*/
 
 if (!defined('ABSPATH')) exit;
 
