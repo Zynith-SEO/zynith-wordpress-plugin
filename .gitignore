@@ -14,3 +14,5 @@ zynith-seo.zip
 # Env Files
 .env.*
 
+# Test Files
+test-reports
