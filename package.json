@@ -12,10 +12,13 @@
         "build:dev": "vite build && gulp build-plugin",
         "build:plugin": "npm run build:dev && gulp cleanup-plugin",
         "build:release": "gulp update-plugin-version && npm run build:plugin",
+        "test:flywheel": "NODE_ENV=test TEST_HOST=flywheel wdio run ./wdio.conf.ts",
+        "test:localwp": "NODE_ENV=test TEST_HOST=localwp wdio run ./wdio.conf.ts",
+        "test:report": "allure generate test-reports/allure-results --clean -o test-reports/allure-report && allure open test-reports/allure-report",
+        "test:wpengine": "NODE_ENV=test TEST_HOST=wpengine wdio run ./wdio.conf.ts",
         "version:major": "npm version major",
         "version:minor": "npm version minor",
-        "version:patch": "npm version patch",
-        "wdio": "wdio run ./wdio.conf.ts"
+        "version:patch": "npm version patch"
     },
     "devDependencies": {
         "@types/node": "^22.13.10",
