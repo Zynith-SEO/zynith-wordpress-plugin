@@ -10,3 +10,7 @@ dist
 # Plugin Files
 zynith-seo
 zynith-seo.zip
+
+# Env Files
+.env.*
+
