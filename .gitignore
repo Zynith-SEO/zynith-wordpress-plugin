@@ -1,6 +1,12 @@
 node_modules
+
+# Build Files
 dist
 *.zip
+
+# OS Files
 .DS_Store
+
+# Plugin Files
 zynith-seo
 zynith-seo.zip
