@@ -36,7 +36,6 @@
         "eslint-plugin-prettier": "^5.2.1",
         "glob": "^11.0.0",
         "gulp": "^5.0.0",
-        "gulp-iconv-lite": "^0.0.1",
         "gulp-zip": "^6.0.0",
         "npm-version": "^1.1.0",
         "prettier": "^3.3.3",
@@ -48,7 +47,8 @@
     "dependencies": {
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.3",
-        "dotenv": "^16.4.7"
+        "dotenv": "^16.4.7",
+        "iconv-lite": "^0.6.3"
     },
     "type": "module"
 }

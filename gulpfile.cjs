@@ -11,6 +11,16 @@ const iconv = require('gulp-iconv-lite');
 const pathPackageFile = path.resolve(__dirname, 'package.json');
 const pathPluginFile = path.resolve(__dirname, 'src/php/zynith-seo.php');
 
+// Function to convert file encoding
+function convertEncoding(fromEncoding, toEncoding) {
+    return through.obj(function (file, _, cb) {
+        if (file.isBuffer()) {
+            file.contents = Buffer.from(iconv.decode(file.contents, fromEncoding), toEncoding);
+        }
+        cb(null, file);
+    });
+}
+
 // Delay function (takes time in milliseconds)
 function delayNextTask(time) {
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -24,12 +34,12 @@ function getPluginVersion() {
     return version;
 }
 
-// Gulp task to convert all PHP files encoding from any encoding (like us-ascii) to utf-8
+// Gulp task to convert PHP file encoding from US-ASCII to UTF-8
 gulp.task('convert-php-encoding', function () {
     return gulp
-        .src('./zynith-seo/**/*.php') // Include all PHP files inside the 'zynith-seo' directory and subdirectories
-        .pipe(iconv({ from: 'us-ascii', to: 'utf-8' })) // Convert encoding to utf-8
-        .pipe(gulp.dest('./zynith-seo')); // Save the converted files back to the same directory
+        .src('./zynith-seo/**/*.php') // Include all PHP files
+        .pipe(convertEncoding('us-ascii', 'utf-8')) // Convert encoding
+        .pipe(gulp.dest('./zynith-seo')); // Save back to the same directory
 });
 
 // Copy /dist/assets/ folder to the plugin folder (retain `assets` folder)
