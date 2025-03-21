@@ -7,31 +7,6 @@
  */
 defined('ABSPATH') or exit;
 
-// Add the custom login URL setting field to the main Zynith SEO settings page
-function zynith_seo_custom_login_url_setting() {
-    add_settings_field(
-        'zynith_seo_custom_login_url',
-        'Custom Login URL',
-        'zynith_seo_custom_login_url_callback',
-        'zynith_seo',
-        'zynith_seo_ui_section',
-        ['label_for' => 'zynith_seo_custom_login_url']
-    );
-    register_setting('zynith_seo', 'zynith_seo_custom_login_url', [
-        'type' => 'string',
-        'sanitize_callback' => 'sanitize_text_field'
-    ]);
-}
-add_action('admin_init', 'zynith_seo_custom_login_url_setting');
-
-// Display the input field for the custom login URL
-function zynith_seo_custom_login_url_callback($args) {
-    $option_name = $args['label_for'];
-    $value = get_option($option_name, ''); // Default custom login URL slug
-    echo "<input type='text' id='{$option_name}' name='{$option_name}' value='{$value}' placeholder='custom-login' style='margin: 0 10px 0 0;' />";
-    echo "<span class='description'>Set a custom login URL (e.g., '/secure-login').</span>";
-}
-
 // Block old login URLs by returning a 404 error
 function zynith_seo_block_old_login_urls() {
     $custom_slug = get_option('zynith_seo_custom_login_url', '');
