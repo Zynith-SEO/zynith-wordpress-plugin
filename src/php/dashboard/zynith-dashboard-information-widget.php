@@ -103,28 +103,6 @@ function zynith_dashboard_widget_display() {
 }
 add_action('zynith_seo_dashboard_widget', 'zynith_dashboard_widget_display');
 
-// Hook into the Zynith SEO dashboard page and display the widget.
-function zynith_seo_dashboard_page_with_widget() {
-    // Add styles for the widget container
-    echo '<div class="zynith-dashboard-header">';
-    echo '<h1>Zynith SEO Dashboard</h1>';
-    echo '<p>Welcome to the Zynith SEO Dashboard. Here you can see an overview and access important tools for your SEO needs.</p>';
-    echo '</div>';
-    echo '<div class="zynith-widgets-container" style="display: flex; flex-direction: column; margin: 0 20px 0 0; gap: 20px;">';
-    do_action('zynith_seo_dashboard_widget'); // Hook to display widgets
-    echo '</div>';
-}
-add_action('admin_menu', function () {
-    add_submenu_page(
-        'zynith_seo_dashboard', // Parent slug
-        'Zynith SEO Dashboard', // Page title
-        'Dashboard', // Menu title
-        'manage_options', // Capability
-        'zynith_seo_dashboard', // Menu slug
-        'zynith_seo_dashboard_page_with_widget' // Callback function
-    );
-});
-
 function zynith_seo_display_admin_message() {
     $message = get_option('zynith_seo_admin_message', '');
     if (!empty($message)) echo $message;
