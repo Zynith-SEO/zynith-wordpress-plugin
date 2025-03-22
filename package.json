@@ -12,13 +12,23 @@
         "build:dev": "vite build && gulp build-plugin",
         "build:plugin": "npm run build:dev && gulp cleanup-plugin",
         "build:release": "gulp update-plugin-version && npm run build:plugin",
+        "test:flywheel": "NODE_ENV=test TEST_HOST=flywheel wdio run ./wdio.conf.ts",
+        "test:localwp": "NODE_ENV=test TEST_HOST=localwp wdio run ./wdio.conf.ts",
+        "test:report": "allure generate test-reports/allure-results --clean -o test-reports/allure-report && allure open test-reports/allure-report",
+        "test:wpengine": "NODE_ENV=test TEST_HOST=wpengine wdio run ./wdio.conf.ts",
         "version:major": "npm version major",
         "version:minor": "npm version minor",
         "version:patch": "npm version patch"
     },
     "devDependencies": {
-        "@types/node": "^22.7.9",
+        "@types/node": "^22.13.10",
+        "@wdio/allure-reporter": "^9.11.0",
+        "@wdio/cli": "^9.12.0",
+        "@wdio/local-runner": "^9.12.0",
+        "@wdio/mocha-framework": "^9.11.0",
+        "@wdio/types": "^9.10.1",
         "adm-zip": "^0.5.16",
+        "allure-commandline": "^2.33.0",
         "axios": "^1.7.7",
         "del": "^8.0.0",
         "eslint": "9.12.0",
@@ -26,7 +36,6 @@
         "eslint-plugin-prettier": "^5.2.1",
         "glob": "^11.0.0",
         "gulp": "^5.0.0",
-        "gulp-iconv-lite": "^0.0.1",
         "gulp-zip": "^6.0.0",
         "npm-version": "^1.1.0",
         "prettier": "^3.3.3",
@@ -37,7 +46,9 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.11.8",
-        "bootstrap": "^5.3.3"
+        "bootstrap": "^5.3.3",
+        "dotenv": "^16.4.7",
+        "iconv-lite": "^0.6.3"
     },
     "type": "module"
 }
