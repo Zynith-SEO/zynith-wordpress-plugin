@@ -1,23 +1,38 @@
 // Core Modules
 const fs = require('fs');
-const https = require('https');
 const path = require('path');
 
 // NPM Modules
 const gulp = require('gulp');
-const iconv = require('gulp-iconv-lite');
+const { PluginError } = require('gulp-util');
+const iconv = require('iconv-lite');
+const through = require('through2');
 
 // Variables
 const pathPackageFile = path.resolve(__dirname, 'package.json');
 const pathPluginFile = path.resolve(__dirname, 'src/php/zynith-seo.php');
 
 // Function to convert file encoding
-function convertEncoding(fromEncoding, toEncoding) {
-    return through.obj(function (file, _, cb) {
-        if (file.isBuffer()) {
-            file.contents = Buffer.from(iconv.decode(file.contents, fromEncoding), toEncoding);
+function convertEncoding({ decodeFrom = 'utf8', encodeTo = 'utf8' } = {}) {
+    const PLUGIN_NAME = 'convert-php-encoding';
+
+    return through.obj(function (file, enc, callback) {
+        if (file.isNull()) {
+            this.push(file);
+            return callback();
         }
-        cb(null, file);
+
+        if (file.isBuffer()) {
+            const str = iconv.decode(file.contents, decodeFrom);
+            const buf = iconv.encode(str, encodeTo);
+            file.contents = buf;
+            this.push(file);
+            return callback();
+        }
+
+        if (file.isStream()) {
+            return callback(new PluginError(PLUGIN_NAME, 'Stream is not supported'));
+        }
     });
 }
 
@@ -37,9 +52,9 @@ function getPluginVersion() {
 // Gulp task to convert PHP file encoding from US-ASCII to UTF-8
 gulp.task('convert-php-encoding', function () {
     return gulp
-        .src('./zynith-seo/**/*.php') // Include all PHP files
-        .pipe(convertEncoding('us-ascii', 'utf-8')) // Convert encoding
-        .pipe(gulp.dest('./zynith-seo')); // Save back to the same directory
+        .src('./zynith-seo/**/*.php')
+        .pipe(convertEncoding({ decoding: 'us-ascii', encoding: 'utf-8' }))
+        .pipe(gulp.dest('./zynith-seo'));
 });
 
 // Copy /dist/assets/ folder to the plugin folder (retain `assets` folder)
