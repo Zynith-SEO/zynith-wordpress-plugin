@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Dashboard Update Notes Widget
- * Description: A dashboard widget displaying update information for Zynith SEO with integration into the main Zynith SEO plugin.
- * Version:     1.2.9
- * Author:      Zynith SEO
- */
+
 defined('ABSPATH') or exit;
 
 // Save the license key via POST request.

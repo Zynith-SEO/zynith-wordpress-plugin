@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name: ZYNITH SEO - Admin Bar Hover Transition (Screen Options and Help)
-Description: Adds a fade-in and fade-out transition effect to the WordPress admin bar's "Screen Options" and "Help" buttons. They will be 100% invisible by default and will fade in on hover.
-Version: 1.1.1
-Author: ZYNITH SEO
-*/
 
 if (!defined('ABSPATH')) exit;
 

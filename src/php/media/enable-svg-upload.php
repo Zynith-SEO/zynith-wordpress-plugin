@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name: ZYNITH SEO - SVG Upload Support
-Description: Allows SVG files to be uploaded to the WordPress media library by default for ZYNITH SEO.
-Version: 1.0
-Author: ZYNITH SEO
-*/
 
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) {

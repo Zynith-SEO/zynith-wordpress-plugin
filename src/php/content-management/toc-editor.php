@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Table of Contents Editor
- * Description: A Table of Contents plugin for Zynith SEO with customizable options and dynamic heading nesting.
- * Version:     2.3.3
- * Author:      Zynith SEO
-*/
+
 defined('ABSPATH') or exit;
 
 // Add settings page under the Zynith SEO menu

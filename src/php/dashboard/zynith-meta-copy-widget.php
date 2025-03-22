@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Meta Copy and Export Widget
- * Description: A dashboard widget for copying meta information from Yoast, RankMath, Zynith <9.0, including noindex and nofollow settings, and exporting Zynith meta data to CSV.
- * Version:     1.2.5
- * Author:      Zynith SEO
- */
+
 defined('ABSPATH') or exit;
 
 // Display function for the Meta Copy and Export Widget

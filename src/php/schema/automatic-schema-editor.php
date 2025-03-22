@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Automatic Schema Editor
- * Description: Provides automated schema types for posts, pages, authors, date archives, about pages, contact pages, FAQ pages, and product schema with fields for company-specific details.
- * Version:     1.3.2
- * Author:      Zynith SEO
- */
+
 defined('ABSPATH') or exit;
 
 // Register Schema Settings Page in Zynith SEO Menu

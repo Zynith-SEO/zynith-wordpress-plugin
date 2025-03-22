@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Revisions Limit
- * Description: Sets a limit on the number of revisions stored for posts/pages based on user settings from the ZYNITH SEO plugin.
- * Version:     1.0.1
- * Author:      Zynith SEO
-*/
+
 defined('ABSPATH') or exit;
 
 function zynith_seo_set_revision_limit() {

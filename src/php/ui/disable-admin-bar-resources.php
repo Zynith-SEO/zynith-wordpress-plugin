@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name: ZYNITH SEO - Disable Admin Bar Links
-Description: Removes the WordPress admin bar links like About WordPress, Documentation, and others.
-Version: 1.0.1
-Author: ZYNITH SEO
-*/
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;

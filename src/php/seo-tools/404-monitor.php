@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name: ZYNITH SEO 404 Monitor
-Description: Logs 404 errors including URL, referrer, user agent, and timestamp, and displays them in the WordPress admin area. Allows creation and deletion of the 404 logs table, and deleting individual log entries.
-Version: 1.3.1
-Author: ZYNITH SEO
-*/
 
 if (!defined('ABSPATH')) exit;
 

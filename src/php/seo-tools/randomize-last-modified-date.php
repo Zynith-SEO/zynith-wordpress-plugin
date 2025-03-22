@@ -1,10 +1,4 @@
 <?php
-/**
- * Plugin Name: Zynith SEO - Randomize Dates
- * Description: Allows users to randomize Last Modified or Published dates for posts, pages, CPTs, categories, tags, authors, and WooCommerce products.
- * Version: 1.1.0
- * Author: Zynith SEO
- */
 
 if (!defined('ABSPATH')) {
     exit;

@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name:    Zynith SEO - Disable Comments
- * Description:    This module disables comments across the entire site, removing comment forms and hiding existing comments.
- * Author:         Zynith SEO
- * Version:        1.0.1
-*/
+
 defined('ABSPATH') or exit;
 
 // Disable support for comments and trackbacks in post types

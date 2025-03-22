@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name:    Zynith SEO - Custom Data Sanitization
-Description:    Safely sanitizes custom placeholders (e.g., %%title%%, %%date%%) in SEO meta fields.
-Version:        0.0.0
-Author:         Zynith SEO
-*/
 
 defined('ABSPATH') or exit;
 

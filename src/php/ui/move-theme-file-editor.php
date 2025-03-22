@@ -1,10 +1,4 @@
 <?php
-/*
-Module Name:    Move Theme File Editor
-Description:    Moves the Theme File Editor to the last option under the Appearance menu.
-Author:         ZYNITH SEO
-Version:        1.0.0
-*/
 
 if (!defined('ABSPATH')) exit;
 

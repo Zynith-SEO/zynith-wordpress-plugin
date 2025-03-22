@@ -1,10 +1,4 @@
 <?php
-/**
- * Plugin Name:    Zynith SEO - Dynamic Placeholders
- * Description:    Replaces custom placeholders (e.g. %%title%%, %%date%%, etc.) in post content.
- * Version:        0.0.2
- * Author:         Zynith SEO
- */
 
 defined('ABSPATH') or exit;
 

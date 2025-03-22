@@ -1,10 +1,4 @@
 <?php
-/*
-Module Name: ZYNITH SEO Custom Post Types
-Description: This module allows users to create and manage custom post types (CPTs) natively within ZYNITH SEO.
-Author: ZYNITH SEO
-Version: 1.6
-*/
 
 if (!defined('ABSPATH')) {
     exit;

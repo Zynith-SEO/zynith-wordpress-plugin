@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name: ZYNITH SEO Breadcrumbs
-Description: A breadcrumbs module for ZYNITH SEO that includes schema injection, customization options, and optional CSS class.
-Version: 1.3.1
-Author: ZYNITH SEO
-*/
 
 if (!defined('ABSPATH')) exit;
 

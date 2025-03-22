@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO Light Theme
- * Description: Provides a modern light mode for the WordPress admin interface.
- * Version:     1.0.4
- * Author:      Zynith SEO
-*/
+
 defined('ABSPATH') or exit;
 
 function zynith_seo_enqueue_light_css() {

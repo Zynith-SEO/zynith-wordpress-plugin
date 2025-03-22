@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO Meta Manager
- * Description: Adds a meta box for custom meta titles, descriptions, and OG tags. Outputs these meta tags in the <head> of the page. Supports any CPT, Categories, Tags, and Authors.
- * Version:     3.0.8
- * Author:      Zynith SEO
-*/
+
 defined('ABSPATH') or exit;
 
 // Render the meta box fields with WordPress styling

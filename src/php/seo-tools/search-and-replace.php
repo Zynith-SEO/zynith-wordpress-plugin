@@ -1,10 +1,4 @@
 <?php
-/**
- * Plugin Name: Zynith SEO - Search and Replace Submenu
- * Description: A sub-menu page for search and replace functionality across selected tables, including the option to delete tables.
- * Version: 1.0.0
- * Author: Zynith SEO
- */
 
 // Security check
 if (!defined('ABSPATH')) {

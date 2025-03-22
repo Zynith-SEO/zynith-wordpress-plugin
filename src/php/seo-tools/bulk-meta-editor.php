@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Bulk Meta Editor
- * Description: Adds Meta Title and Meta Description fields to the Pages and Posts list in the WordPress admin and saves on blur. Also adds noindex/index functionality to the Bulk Actions WP drop-down box.
- * Version:     1.1.1
- * Author:      Zynith SEO
-*/
+
 defined('ABSPATH') or exit;
 
 function bulk_meta_editor_enqueue_scripts($hook) {

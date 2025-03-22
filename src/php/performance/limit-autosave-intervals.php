@@ -1,10 +1,4 @@
 <?php
-/*
-Plugin Name: ZYNITH SEO - Autosave Interval
-Description: Sets a custom autosave interval for posts/pages based on user settings from the ZYNITH SEO plugin.
-Version: 1.1
-Author: ZYNITH SEO
-*/
 
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) {

@@ -1,9 +1,4 @@
 <?php
-/**
- * Module Name: Zynith SEO - Redirect Manager
- * Version:     1.0.0
- * Author:      Zynith SEO
- */
 
 error_log('ZYNITH SEO DEBUG: Redirect Manager Loaded');
 

@@ -1,9 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Sitemap Generator
- * Version:     1.2.8
- * Author:      Zynith SEO
- */
+
 defined('ABSPATH') or exit;
 
 add_filter('wp_sitemaps_enabled', '__return_false');

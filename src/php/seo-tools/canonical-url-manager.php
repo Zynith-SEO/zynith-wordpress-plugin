@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Canonical URL Manager
- * Description: Adds a meta box for custom canonical URLs on pages, posts, and CPTs. Outputs the custom canonical URL in the `<head>` section and integrates with the sitemap.
- * Version:     1.0.1
- * Author:      Zynith SEO
- */
+
 defined('ABSPATH') or exit;
 
 // Add meta box for canonical URL

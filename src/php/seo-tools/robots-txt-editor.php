@@ -1,10 +1,5 @@
 <?php
-/**
- * Module Name: Zynith SEO - Robots Text Editor
- * Description: This module adds a Robots Text Editor under the Zynith SEO menu, allowing you to edit the robots.txt file live using the WordPress admin UI.
- * Version:     1.0.2
- * Author:      Zynith SEO
-*/
+
 defined('ABSPATH') or exit;
 
 // Add Robots Editor Menu under ZYNITH SEO
