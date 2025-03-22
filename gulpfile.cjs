@@ -1,11 +1,10 @@
 // Core Modules
 const fs = require('fs');
-const https = require('https');
 const path = require('path');
 
 // NPM Modules
 const gulp = require('gulp');
-const iconv = require('gulp-iconv-lite');
+const iconv = require('iconv-lite');
 
 // Variables
 const pathPackageFile = path.resolve(__dirname, 'package.json');
