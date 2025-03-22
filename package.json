@@ -48,7 +48,9 @@
         "@popperjs/core": "^2.11.8",
         "bootstrap": "^5.3.3",
         "dotenv": "^16.4.7",
-        "iconv-lite": "^0.6.3"
+        "gulp-util": "^3.0.8",
+        "iconv-lite": "^0.6.3",
+        "through2": "^4.0.2"
     },
     "type": "module"
 }
