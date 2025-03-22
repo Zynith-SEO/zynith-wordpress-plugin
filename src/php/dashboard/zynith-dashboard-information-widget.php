@@ -59,9 +59,13 @@ function zynith_dashboard_widget_display() {
     echo '<h4 style="font-size: 17px; margin: 0; color: #2e3c52;">Updates in this version (' . ZYNITH_SEO_VERSION . '):</h4>';
     echo '<ul style="list-style: disc; margin-left: 20px; padding-left: 10px;">';
 
-    echo '<li><strong>Redirect Manager:</strong> Introduced a new Redirect Manager supporting 301 and 302 redirects.</li>';
-    echo '<li><strong>Secure Login:</strong> Added the option to set a custom login URL, concealing wp-admin and wp-login if enabled.</li>';
-    echo '<li><strong>CSS:</strong> Minor refinements for improved styling consistency.</li>';
+    echo '<li><strong>Schema Encoding:</strong> Unicode handling improved for special characters and JSON output.</li>';
+    echo '<li><strong>Table of Contents:</strong> Fixed formatting, indentation, and numbering issues.</li>';
+    echo '<li><strong>Redirect Manager:</strong> Updated features for 301/302 redirect management.</li>';
+    echo '<li><strong>Custom Post Type:</strong> Improved support and structure for CPT registration.</li>';
+    echo '<li><strong>Settings Page:</strong> Layout and UI updates for better usability.</li>';
+    echo '<li><strong>WebDriver Testing:</strong> Local test setup added for automated testing baseline.</li>';
+    echo '<li><strong>Bug Fixes:</strong> Resolved build errors and cleaned up module header comments.</li>';
     
     echo '</ul>';
     echo '<p style="margin-top: 15px;">Learn more about how to use these new features to optimize your website’s SEO:</p>';
