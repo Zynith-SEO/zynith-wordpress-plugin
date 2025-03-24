@@ -132,6 +132,9 @@ function zynith_seo_render_deferment_manager_page() {
 // Lazy Loading Implementation
 function zynith_seo_lazy_loading($tag, $handle, $src) {
     
+    // Only apply lazy loading on the frontend, not in the admin
+    if (is_admin()) return $tag;
+
     // Provide defaults for all expected keys
     $defaults = [
         'lazy_loading'           => 'disabled',
