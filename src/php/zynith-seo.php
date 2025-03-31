@@ -27,6 +27,7 @@ define('ZYNITH_SEO_SLUG', plugin_basename(__FILE__));
 define('ZYNITH_SEO_DIR', plugin_dir_path(__FILE__));
 define('ZYNITH_SEO_URL', plugin_dir_url(__FILE__));
 
+global $zynith_seo_module_data;
 $zynith_seo_module_data = [
     [
         'file'             => 'seo-tools/meta-editor.php',

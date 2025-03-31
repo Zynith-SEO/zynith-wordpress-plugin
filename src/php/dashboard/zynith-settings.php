@@ -1,6 +1,7 @@
 <?php
 defined('ABSPATH') or exit;
 
+global $zynith_seo_settings;
 $zynith_seo_settings = [
     [
         'name'             => 'On-page Meta Editor',
