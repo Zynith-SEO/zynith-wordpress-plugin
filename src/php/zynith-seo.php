@@ -36,7 +36,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_meta_editor',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section'  => 'zynith_seo_seo_tools_section', // Product Group: SEO Tools
         'admin_only'        => false,
         'option_version'    => 9
     ],  // 1. On-page Meta Editor    
@@ -48,7 +47,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_meta_robots',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 2. On-page Meta Robots
@@ -60,7 +58,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_SEO_disable_canonical_url',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 3. On-page Canonical URL
@@ -72,7 +69,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_on_page_schema_editor',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 4. On-page Schema Editor
@@ -88,7 +84,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_bulk_meta_editor',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 6. Bulk Meta Editing
@@ -104,7 +99,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_SEO_disable_bulk_noindex',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 7. Bulk Indexing
@@ -116,7 +110,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_automatic_schema_editor',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 8. Automatic Schema Editor
@@ -128,7 +121,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_image_alt',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 9. Automatic Alt Text
@@ -140,7 +132,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_robots_text_editor',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 10. Robots.txt Settings
@@ -152,7 +143,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_sitemap_generator',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 11. Sitemap Generator
@@ -164,7 +154,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_404_monitor',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 12. 404 Monitor
@@ -176,7 +165,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_redirect_manager',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 13. Redirect Manager
@@ -188,7 +176,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_search_replace',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => true,
         'option_version'    => 9
     ],  // 14. Search and Replace
@@ -200,7 +187,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_date_randomizer',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 15. Randomize Post Dates
@@ -212,7 +198,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_breadcrumb_editor',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 16. Breadcrumb Shortcode
@@ -224,7 +209,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_toc_editor',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 17. ToC Shortcode
@@ -236,7 +220,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_cpt_editor',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 18. Custom Post Types
@@ -248,7 +231,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_script_manager',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 19. Script Manager
@@ -260,7 +242,6 @@ $zynith_seo_module_data = [
         'old_option'       => null,
         'old_value'         => null,
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 20. Disable Comments
@@ -275,7 +256,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_htaccess_file_editor',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_seo_tools_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 21. .htaccess Editor
@@ -287,7 +267,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_svg_uploads',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_ui_section', // WP Admin UI Settings
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 22. Allow SVG Uploads
@@ -299,7 +278,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_remove_dashboard_widgets',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_ui_section',
         'admin_only'       => true,
         'option_version'    => 9
     ],  // 23. Clear WordPress Dashboard
@@ -311,7 +289,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_admin_bar_resources',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_ui_section',
         'admin_only'       => true,
         'option_version'    => 9
     ],  // 24. Reduce Admin Bar Resources
@@ -323,7 +300,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_admin_bar_transition',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_ui_section',
         'admin_only'       => true,
         'option_version'    => 9
     ],  // 25. Prettify Admin Bar
@@ -335,7 +311,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_light_mode',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_ui_section',
         'admin_only'       => true,
         'option_version'    => 9
     ],  // 26. Prettify Admin Styling
@@ -347,7 +322,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_enable_gutenberg',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_ui_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 27. Disable Gutenberg
@@ -359,7 +333,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_disable_admin_title_search',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_ui_section',
         'admin_only'       => true,
         'option_version'    => 9
     ],  // 28. Page Search by Title
@@ -371,7 +344,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_enable_footer_customizer',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_ui_section',
         'admin_only'       => true,
         'option_version'    => 9
     ],  // 29. Enable Zynith Admin Footer
@@ -383,7 +355,6 @@ $zynith_seo_module_data = [
         'old_option'       => null,
         'old_value'         => null,
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_ui_section',
         'admin_only'       => true,
         'option_version'    => 9
     ],  // 30. Move Plugin File Editor
@@ -395,7 +366,6 @@ $zynith_seo_module_data = [
         'old_option'       => null,
         'old_value'         => null,
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_ui_section',
         'admin_only'       => true,
         'option_version'    => 9
     ],  // 31. Move Theme File Editor
@@ -407,7 +377,6 @@ $zynith_seo_module_data = [
         'old_option'       => null,
         'old_value'         => null,
         'option_type'      => 'custom_url',
-        'settings_section' => 'zynith_seo_ui_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 32. Custom Login URL
@@ -419,7 +388,6 @@ $zynith_seo_module_data = [
         'old_option'       => null,
         'old_value'         => null,
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_performance_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 33. Deferment Manager
@@ -431,7 +399,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_enable_rest_api',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_performance_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 34. Disable REST API
@@ -443,7 +410,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_enable_rss',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_performance_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 35. Disable RSS Feeds
@@ -455,7 +421,6 @@ $zynith_seo_module_data = [
         'old_option'       => 'zynith_seo_enable_wp_generator_tag',
         'old_value'         => 'Switch',
         'option_type'      => 'boolean',
-        'settings_section' => 'zynith_seo_performance_section',
         'admin_only'       => false,
         'option_version'    => 9
     ],  // 36. Remove WP Generator Tag
@@ -472,7 +437,6 @@ $zynith_seo_module_data = [
         'old_option'       => null,
         'old_value'         => null,
         'option_type'      => 'integer',
-        'settings_section' => 'zynith_seo_performance_section',
         'admin_only'       => true,
         'option_version'    => 9
     ],  // 37. Autosave Interval (seconds)
@@ -489,7 +453,6 @@ $zynith_seo_module_data = [
         'old_option'       => null,
         'old_value'         => null,
         'option_type'      => 'integer_limit',
-        'settings_section' => 'zynith_seo_performance_section',
         'admin_only'       => true,
         'option_version'    => 9
     ],  // 38. Revision Limit
