@@ -1,13 +1,7 @@
 <?php
-/**
- * Module Name: Zynith SEO - Dashboard Update Notes Widget
- * Description: A dashboard widget displaying update information for Zynith SEO with integration into the main Zynith SEO plugin.
- * Version:     1.2.9
- * Author:      Zynith SEO
- */
 defined('ABSPATH') or exit;
 
-// Add Zynith SEO dashboard and settings to the admin menu
+// Add Zynith SEO dashboard to the admin menu
 function zynith_seo_add_admin_menu() {
     if (!defined('ZYNITH_SEO_ICON')) define('ZYNITH_SEO_ICON', 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJMYXllcl8yIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMTguNzQgMjAiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDp1cmwoI2xpbmVhci1ncmFkaWVudCk7c3Ryb2tlLXdpZHRoOjBweDt9PC9zdHlsZT48bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9Ii0yLjQ1IiB5MT0iLTUxLjkiIHgyPSIxNi4yOSIgeTI9Ii01MS45IiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDAgLTQxLjkpIHNjYWxlKDEgLTEpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjMjg1YmQxIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZWEzM2YyIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGcgaWQ9IkxheWVyXzItMiI+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNOC43LDE1LjUzQzEyLjAxLDEwLjQyLDE1LjMyLDUuMzEsMTguNjMuMiwxMi43Ny4xMiw4LjM4LjEsNi4yOC4wMWMtLjQxLS4wMi0xLjY1LS4wNy0zLjA3LjQ2LS41NS4yMS0xLjMuNS0xLjk3LDEuMkMuMjEsMi43NC4wNCw0LjA3LDAsNC42MWgxMC4wMkM2LjcsOS43NCwzLjM4LDE0Ljg3LjA2LDIwaDEzLjY5Yy41NC0uMDEsMi4xOS0uMTIsMy41My0xLjMyLjMzLS4yOS45OC0uODksMS4yOS0xLjkxLjE1LS40Ny4xOC0uODkuMTgtMS4xNy0zLjM1LS4wMi02LjctLjA0LTEwLjA1LS4wNmgwWk0xNi45NSwxNy43aDBzLS4zOC40MS0uODQuNzNjLTEuMTQuOC0zLjA3Ljg1LTMuMDcuODUtMS4yMy4wMy01LjU3LjEyLTExLjYxLjAyQzYuNywxMS4yMiwxMC41MSw1LjM5LDEwLjgsNS4wMWMuMDMtLjA1LjItLjI1LjE5LS41MiwwLS4wMy0uMDEtLjI4LS4xOS0uNDUtLjIzLS4yMi0uNTktLjItLjY5LS4xOS0uNi4wNC00LjIzLjA2LTkuMjMuMS4xNC0uNDguNTctMS42OSwxLjcxLTIuNC43OC0uNDgsMS43MS0uNjIsMi4wOS0uNjcuMzYtLjA1LjY3LS4wNy44OS0uMDcsMy44My4wOCw3LjY2LjE3LDExLjQ4LjI1LTMuMDksNC43My02LjE4LDkuNDctOS4yNiwxNC4yLS4wMy4wOS0uMS4zMS0uMDQuNTguMDIuMDcuMDguMzIuMjkuNTEuMDcuMDYuMjUuMTkuNTguMjIuNTIuMDQsNC4wNS4wNSw4LjksMC0uMDguMjctLjI0LjctLjU4LDEuMTNoMFoiLz48L2c+PC9zdmc+');
     
@@ -19,16 +13,6 @@ function zynith_seo_add_admin_menu() {
         'zynith_seo_dashboard_page',
         ZYNITH_SEO_ICON,
         60
-    );
-    $tbyb = get_option('zynith_seo_tbyb', '');
-    if ($tbyb == 'expired') return;
-    add_submenu_page(
-        'zynith_seo_dashboard',
-        'Settings',
-        'Settings',
-        'manage_options',
-        'zynith_seo_settings',
-        'zynith_seo_settings_page'
     );
 }
 add_action('admin_menu', 'zynith_seo_add_admin_menu');
@@ -77,23 +61,6 @@ function zynith_seo_dashboard_page() {
     </style>
     <?php
 }
-
-// Display the settings page for Zynith SEO
-function zynith_seo_settings_page() {
-    ?>
-    <div class="wrap">
-        <h1>Zynith SEO Settings</h1>
-        <form action="options.php" method="post">
-            <?php
-            settings_fields('zynith_seo');
-            do_settings_sections('zynith_seo');
-            submit_button();
-            ?>
-        </form>
-    </div>
-    <?php
-}
-
 
 // Save the license key via POST request.
 function zynith_save_license_key() {
