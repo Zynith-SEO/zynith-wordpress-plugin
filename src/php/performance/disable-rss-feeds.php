@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or exit;
 
 // Function to remove RSS feed links from the <head> section
 function zynith_seo_disable_rss_feed_links() {

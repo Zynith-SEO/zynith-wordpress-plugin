@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or exit;
 
 function zynith_seo_add_alt_text($post_ID) {
     

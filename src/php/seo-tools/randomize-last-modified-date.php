@@ -1,8 +1,5 @@
 <?php
-
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') or exit;
 
 // Add submenu to Zynith SEO dashboard
 function zynith_add_random_date_submenu() {

@@ -1,6 +1,5 @@
 <?php
-
-if (!defined('ABSPATH')) exit;
+defined('ABSPATH') or exit;
 
 // Add settings page under Tools
 function zynith_seo_breadcrumbs_add_settings_page() {

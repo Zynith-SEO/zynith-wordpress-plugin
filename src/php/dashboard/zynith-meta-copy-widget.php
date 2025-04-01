@@ -1,5 +1,4 @@
 <?php
-
 defined('ABSPATH') or exit;
 
 // Display function for the Meta Copy and Export Widget

@@ -1,9 +1,5 @@
 <?php
-
-// Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) {
-    exit;
-}
+defined('ABSPATH') or exit;
 
 // Allow SVG uploads in the WordPress media library
 function zynith_seo_enable_svg_upload( $mimes ) {

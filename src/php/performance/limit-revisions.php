@@ -1,5 +1,4 @@
 <?php
-
 defined('ABSPATH') or exit;
 
 function zynith_seo_set_revision_limit() {

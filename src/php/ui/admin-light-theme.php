@@ -26,7 +26,7 @@ function zynith_seo_enqueue_light_css() {
 function zynith_seo_enqueue_light_theme() {
     $disable_option = get_option('zynith_seo_disable_light_mode');
 
-    if ($disable_option != 1) {
+    if ($disable_option == 1) {
         // If NOT set to 1, enqueue on all admin pages
         zynith_seo_enqueue_light_css();
     }

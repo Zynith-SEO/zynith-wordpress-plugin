@@ -1,5 +1,4 @@
 <?php
-
 defined('ABSPATH') or exit;
 
 // Add settings page under the Zynith SEO menu

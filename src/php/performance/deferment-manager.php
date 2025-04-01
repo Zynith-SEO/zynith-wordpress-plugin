@@ -1,6 +1,5 @@
 <?php
-
-if (!defined('ABSPATH')) exit;
+defined('ABSPATH') or exit;
 
 // Add the Deferment Manager submenu
 function zynith_seo_deferment_manager_menu() {

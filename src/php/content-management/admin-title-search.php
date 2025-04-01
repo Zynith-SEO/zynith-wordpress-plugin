@@ -1,6 +1,5 @@
 <?php
-
-if (!defined('ABSPATH')) exit;
+defined('ABSPATH') or exit;
 
 function zynith_admin_search_by_title_only($search, $wp_query) {
     global $pagenow, $wpdb;
