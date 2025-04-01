@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or exit;
 
 // Modify the Heartbeat API frequency
 function zynith_seo_optimize_heartbeat( $settings ) {

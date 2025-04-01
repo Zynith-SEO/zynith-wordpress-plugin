@@ -1,8 +1,5 @@
 <?php
-
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') or exit;
 
 function zynith_seo_add_cpt_menu() {
     add_submenu_page(

@@ -1,6 +1,5 @@
 <?php
-
-if (!defined('ABSPATH')) exit;
+defined('ABSPATH') or exit;
 
 // Add the menu option under ZYNITH SEO
 function zynith_seo_404_monitor_menu() {

@@ -1,9 +1,5 @@
 <?php
-
-// Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) {
-    exit;
-}
+defined('ABSPATH') or exit;
 
 // Function to set the autosave interval based on the user option
 function zynith_seo_set_autosave_interval() {

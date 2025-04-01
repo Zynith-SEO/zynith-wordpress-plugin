@@ -172,7 +172,7 @@ function zynith_seo_output_custom_schema() {
             // Output schema with comment tags around the script
             echo "\n<!-- Custom Schema -->\n";
             echo '<script type="application/ld+json">';
-            echo wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+            echo wp_json_encode( $schema_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
             echo '</script>';
             echo "\n<!-- End Custom Schema -->\n";
         }
