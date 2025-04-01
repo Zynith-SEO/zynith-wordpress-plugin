@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or exit;
 
 // Disable REST API for unauthenticated users
 function zynith_seo_disable_rest_api( $access ) {

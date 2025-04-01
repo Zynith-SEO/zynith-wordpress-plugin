@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or exit;
 function zynith_seo_tbyb_notices() {
     if (get_option('zynith_seo_tbyb') === 'expired') {
     ?>

@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or exit;
 
 // Disable WordPress default robots meta tag
 remove_action('wp_head', 'wp_robots', 1);

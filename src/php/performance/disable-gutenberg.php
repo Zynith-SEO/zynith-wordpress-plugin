@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') or exit;
 
 // Disable Gutenberg for posts, pages, and custom post types
 add_filter('use_block_editor_for_post', '__return_false', 10);

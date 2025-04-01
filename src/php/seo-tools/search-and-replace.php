@@ -1,9 +1,5 @@
 <?php
-
-// Security check
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined('ABSPATH') or exit;
 
 // Add submenu for Search and Replace under Zynith SEO
 function zynith_seo_add_search_replace_submenu() {
