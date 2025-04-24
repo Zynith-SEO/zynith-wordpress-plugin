@@ -159,22 +159,29 @@ function zynith_seo_output_custom_schema() {
     if (is_singular()) {
         global $wpdb, $post;
         $table_name = $wpdb->prefix . 'zynith_schema_settings';
-        $schema_data = $wpdb->get_var($wpdb->prepare("SELECT schema_data FROM $table_name WHERE page_id = %d", $post->ID));
+
+        // Fetch stored schema data
+        $schema_data = $wpdb->get_var($wpdb->prepare(
+            "SELECT schema_data FROM $table_name WHERE page_id = %d",
+            $post->ID
+        ));
 
         if ($schema_data) {
-            // Replace placeholders in the schema data
+            // Replace placeholders in the schema
             $schema_data = zynithseo_replace_placeholders_in_content($schema_data, 'post', $post);
-            
-            // Decode and re-encode the JSON for pretty print
+
+            // Attempt to decode for validation and formatting
             $decoded_schema = json_decode(strip_tags($schema_data), true);
-            if (json_last_error() === JSON_ERROR_NONE) $schema_data = json_encode($decoded_schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-            
-            // Output schema with comment tags around the script
-            echo "\n<!-- Custom Schema -->\n";
-            echo '<script type="application/ld+json">';
-            echo wp_json_encode( $schema_data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
-            echo '</script>';
-            echo "\n<!-- End Custom Schema -->\n";
+
+            if (json_last_error() === JSON_ERROR_NONE) {
+                // Re-encode to pretty print and preserve Unicode
+                $clean_json = json_encode($decoded_schema, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+                // Output clean schema
+                echo "\n<!-- Custom Schema -->\n";
+                echo '<script type="application/ld+json">' . $clean_json . '</script>';
+                echo "\n<!-- End Custom Schema -->\n";
+            }
         }
     }
 }
