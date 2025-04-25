@@ -307,8 +307,6 @@ add_action('template_redirect', function () {
             // Save the updated scripts list to the database
             update_option('zynith_detected_scripts', $new_scripts);
             
-            // Optional: Log for debugging purposes
-            error_log('Detected scripts updated: ' . print_r($new_scripts, true));
         }
         
         // Return the output unchanged
