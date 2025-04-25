@@ -3,7 +3,7 @@
 Plugin Name:       Zynith SEO
 Plugin URI:        https://zynith.app/wordpress-plugin-zynith-seo-readme/
 Description:       A powerful yet lightweight SEO plugin designed for maximum efficiency and to streamline SEO management for optimal search engine results.
-Version:           10.5.1
+Version:           10.5.2
 Author:            Zynith SEO
 Author URI:        https://zynith.app/
 Text Domain:       zynith-seo
@@ -19,7 +19,7 @@ Support:           https://www.facebook.com/groups/761871078859984
 */
 defined('ABSPATH') or exit;
 
-define('ZYNITH_SEO_VERSION', '10.5.1');
+define('ZYNITH_SEO_VERSION', '10.5.2');
 
 define('ZYNITH_SEO_TEXT_DOMAIN', 'zynith-seo');
 define('ZYNITH_SEO_FILE', __FILE__);
