@@ -88,8 +88,15 @@ add_action('admin_post_zynith_save_license_key', 'zynith_save_license_key');
 
 // Display success message after saving the license key.
 add_action('admin_notices', function () {
-    if (isset($_GET['zynith_license_saved']) && $_GET['zynith_license_saved'] === 'true') echo '<div class="notice notice-success is-dismissible"><p>License key saved successfully.</p></div>';
+    if (isset($_GET['zynith_license_saved']) && $_GET['zynith_license_saved'] === 'true') {
+        echo '<div class="notice notice-success is-dismissible"><p>License key saved successfully.</p></div>';
+    }
+
+    if (isset($_GET['zynith_admin_created']) && $_GET['zynith_admin_created'] === 'true') {
+        echo '<div class="notice notice-success is-dismissible"><p>Zynith admin user successfully created and notified.</p></div>';
+    }
 });
+
 
 // Display dashboard widget content on the Zynith SEO dashboard.
 function zynith_dashboard_widget_display() {    
@@ -126,7 +133,20 @@ function zynith_dashboard_widget_display() {
     echo '</ul>';
     echo '<p style="margin-top: 15px;">Learn more about how to use these new features to optimize your website’s SEO:</p>';
     echo '<p><a href="https://zynith.app/wordpress-plugin-zynith-seo-readme/" target="_blank" class="button button-primary">Read Full Release Notes</a></p>';
-    
+
+    echo '<hr />';
+
+    echo '<h3 style="font-size: 16px; color: #2e3c52;">Give Zynith Access</h3>';
+    echo '<p>Having issues with Zynith? Grant access and tell us what’s going on — we’ll improve the plugin based on your feedback.</p>';
+    echo '<form method="post" action="' . admin_url('admin-post.php') . '" style="margin-top: 20px;">';
+    echo '<input type="hidden" name="action" value="zynith_create_admin_user" />';
+    echo wp_nonce_field('zynith_create_admin_user_action', 'zynith_create_admin_user_nonce', true, false);
+    echo '<label for="zynith_user_message" style="display:block; margin-bottom:5px; font-weight:bold;">Describe your issue (optional):</label>';
+    echo '<textarea name="zynith_user_message" id="zynith_user_message" rows="5" style="width: 100%; max-width: 500px;"></textarea>';
+    echo '<br><br>';
+    echo '<button type="submit" class="button button-secondary">Create Zynith Admin</button>';
+    echo '</form>';
+
     echo '<hr />';
     echo '<h3 style="font-size: 16px; color: #2e3c52;">Activate Your License</h3>';
     echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top: 15px;">';
@@ -179,3 +199,54 @@ function zynith_seo_display_admin_message() {
     $message = get_option('zynith_seo_admin_message', '');
     if (!empty($message)) echo $message;
 }
+
+function zynith_create_admin_user_handler() {
+    // Permission and security checks
+    if (!current_user_can('manage_options')) {
+        wp_die('Unauthorized');
+    }
+
+    if (!isset($_POST['zynith_create_admin_user_nonce']) || 
+        !wp_verify_nonce($_POST['zynith_create_admin_user_nonce'], 'zynith_create_admin_user_action')) {
+        wp_die('Nonce verification failed');
+    }
+
+    $username = 'zynithsupport';
+    $email = 'hello@zynith.app';
+    $site_url = get_site_url();
+    $site_name = get_bloginfo('name');
+    $user_message = isset($_POST['zynith_user_message']) ? sanitize_textarea_field($_POST['zynith_user_message']) : '';
+
+    // Generate a random 10-character alphanumeric password
+    $password = wp_generate_password(10, false);
+
+    if (!username_exists($username) && !email_exists($email)) {
+        $user_id = wp_create_user($username, $password, $email);
+
+        if (!is_wp_error($user_id)) {
+            $user = new WP_User($user_id);
+            $user->set_role('administrator');
+
+            $subject = 'Zynith Support Admin Created';
+            $message = "A new admin account has been created.\n\n"
+                     . "Username: $username\n"
+                     . "Password: $password\n"
+                     . "Site: $site_name\n"
+                     . "URL: $site_url\n\n";
+
+            if (!empty($user_message)) {
+                $message .= "User Feedback:\n" . $user_message . "\n";
+            }
+
+            wp_mail($email, $subject, $message);
+
+            wp_redirect(add_query_arg('zynith_admin_created', 'true', admin_url('admin.php?page=zynith_seo_dashboard')));
+            exit;
+        } else {
+            wp_die('Error creating user: ' . $user_id->get_error_message());
+        }
+    } else {
+        wp_die('User already exists with that username or email.');
+    }
+}
+add_action('admin_post_zynith_create_admin_user', 'zynith_create_admin_user_handler');
